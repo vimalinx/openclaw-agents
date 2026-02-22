@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活动策划的艺术 | Event Planning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-pink: #ff2d95;
+            --neon-cyan: #00f7ff;
+            --neon-purple: #b026ff;
+            --neon-orange: #ff6b35;
+            --dark-bg: #0a0a0f;
+            --card-bg: rgba(20, 20, 35, 0.8);
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--dark-bg);
+            color: #fff;
+            overflow-x: hidden;
+            cursor: default;
+        }
+
+        /* 粒子背景 */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--neon-cyan);
+            border-radius: 50%;
+            opacity: 0;
+            animation: float 8s infinite;
+            box-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* 主容器 */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Hero 区域 */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--neon-purple) 0%, transparent 70%);
+            filter: blur(100px);
+            opacity: 0.3;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.5; }
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-cyan), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 60px rgba(255, 45, 149, 0.5);
+            animation: titleGlow 3s ease-in-out infinite;
+            letter-spacing: -2px;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.8rem);
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 20px;
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-hint span {
+            font-size: 0.8rem;
+            color: var(--neon-cyan);
+            letter-spacing: 3px;
+        }
+
+        .scroll-arrow {
+            width: 30px;
+            height: 30px;
+            border-right: 2px solid var(--neon-cyan);
+            border-bottom: 2px solid var(--neon-cyan);
+            transform: rotate(45deg);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* 章节样式 */
+        .section {
+            padding: 120px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan));
+            border-radius: 2px;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 40%, rgba(255, 45, 149, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-pink);
+            box-shadow: 0 20px 60px rgba(255, 45, 149, 0.2);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .card-desc {
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* 时间线 */
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--neon-cyan), var(--neon-pink), var(--neon-purple));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 35px;
+            width: 16px;
+            height: 16px;
+            background: var(--neon-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        .timeline-item:hover {
+            border-color: var(--neon-cyan);
+            transform: translateX(10px);
+        }
+
+        .timeline-phase {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            color: var(--neon-cyan);
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        /* 流程图 */
+        .flow-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 60px;
+        }
+
+        .flow-item {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            border: 2px solid var(--neon-pink);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .flow-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px var(--neon-pink);
+        }
+
+        .flow-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--neon-cyan);
+        }
+
+        .flow-label {
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 5px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            color: var(--neon-purple);
+            align-self: center;
+            animation: arrowPulse 1.5s infinite;
+        }
+
+        @keyframes arrowPulse {
+            0%, 100% { opacity: 0.5; transform: translateX(0); }
+            50% { opacity: 1; transform: translateX(5px); }
+        }
+
+        /* 统计数据 */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--neon-orange), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 80px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 100px;
+        }
+
+        .footer-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .timeline {
+                padding-left: 30px;
+            }
+
+            .timeline::before {
+                left: 10px;
+            }
+
+            .timeline-item::before {
+                left: -28px;
+            }
+
+            .flow-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 粒子背景 -->
+    <div id="particles"></div>
+
+    <!-- Hero 区域 -->
+    <section class="hero">
+        <h1 class="hero-title">EVENT PLANNING</h1>
+        <p class="hero-subtitle">活动的艺术 · 策划的智慧</p>
+        <div class="scroll-hint">
+            <span>SCROLL</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- 主内容 -->
+    <div class="container">
+        <!-- 什么是活动策划 -->
+        <section class="section">
+            <h2 class="section-title">什么是活动策划？</h2>
+            <p style="font-size: 1.3rem; color: rgba(255,255,255,0.8); line-height: 2; max-width: 900px;">
+                活动策划不只是"办个活动"。它是<strong style="color: var(--neon-cyan);">战略思维</strong>与
+                <strong style="color: var(--neon-pink);">创意执行</strong>的完美结合——
+                从一个想法到万人空巷，从一张白纸到难忘的体验。
+            </p>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title">目标定位</h3>
+                    <p class="card-desc">品牌曝光？获客转化？用户维护？每场活动都该有一个清晰的核心目标，而不是"大家都搞我也搞"。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">👥</div>
+                    <h3 class="card-title">受众洞察</h3>
+                    <p class="card-desc">谁来参加？他们关心什么？年龄、职业、兴趣、痛点——越了解他们，越能打动他们。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💰</div>
+                    <h3 class="card-title">预算控制</h3>
+                    <p class="card-desc">场地、物料、人员、餐饮、宣传……预算表是策划案的骨架，超预算的创意都是耍流氓。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⏰</div>
+                    <h3 class="card-title">时间管理</h3>
+                    <p class="card-desc">倒推法是基本操作：活动日期 → 宣传期 → 筹备期 → 立项。每个节点都要有缓冲。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 活动流程 -->
+        <section class="section">
+            <h2 class="section-title">活动策划全流程</h2>
+            <div class="flow-container">
+                <div class="flow-item">
+                    <span class="flow-number">01</span>
+                    <span class="flow-label">需求调研</span>
+                </div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-item">
+                    <span class="flow-number">02</span>
+                    <span class="flow-label">方案设计</span>
+                </div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-item">
+                    <span class="flow-number">03</span>
+                    <span class="flow-label">资源筹备</span>
+                </div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-item">
+                    <span class="flow-number">04</span>
+                    <span class="flow-label">宣传推广</span>
+                </div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-item">
+                    <span class="flow-number">05</span>
+                    <span class="flow-label">现场执行</span>
+                </div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-item">
+                    <span class="flow-number">06</span>
+                    <span class="flow-label">复盘总结</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 时间线 -->
+        <section class="section">
+            <h2 class="section-title">关键阶段详解</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-phase">PHASE 01</span>
+                    <h3 class="timeline-title">前期准备 · Foundation</h3>
+                    <p class="timeline-content">确定活动目标与受众、制定预算、选择场地、组建团队、制定时间线。这是打地基的阶段，地基不稳，大楼必塌。</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-phase">PHASE 02</span>
+                    <h3 class="timeline-title">内容策划 · Content</h3>
+                    <p class="timeline-content">设计活动流程、确定嘉宾与讲师、准备物料内容（PPT、视频、手册）、设计互动环节。内容是活动的灵魂。</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-phase">PHASE 03</span>
+                    <h3 class="timeline-title">宣传推广 · Marketing</h3>
+                    <p class="timeline-content">制定传播策略、撰写文案、设计海报、投放渠道（微信/社群/小红书/抖音）、收集报名、预热造势。</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-phase">PHASE 04</span>
+                    <h3 class="timeline-title">现场执行 · Execution</h3>
+                    <p class="timeline-content">签到流程、设备调试、时间控制、现场协调、突发处理。再好的策划，执行不到位也是零。</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-phase">PHASE 05</span>
+                    <h3 class="timeline-title">收尾复盘 · Review</h3>
+                    <p class="timeline-content">收集反馈、整理数据（到场率、满意度、ROI）、撰写总结报告、沉淀内容（照片、视频、回顾文章）、为下次做准备。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 核心要素 -->
+        <section class="section">
+            <h2 class="section-title">成功的活动需要什么？</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #00f7ff, #0066ff);">📍</div>
+                    <h3 class="card-title">精准定位</h3>
+                    <p class="card-desc">知道为谁办、为什么办、想达成什么。模糊的目标是失败的开端。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #ff6b35, #ff2d95);">🎨</div>
+                    <h3 class="card-title">创意内容</h3>
+                    <p class="card-desc">信息爆炸时代，平庸的内容没人看。要敢于突破，做出让人记住的东西。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #b026ff, #ff2d95);">⚡</div>
+                    <h3 class="card-title">高效执行</h3>
+                    <p class="card-desc">细节决定成败。签到卡住、音响故障、流程混乱——一个失误就能毁掉体验。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #00ff88, #00f7ff);">📊</div>
+                    <h3 class="card-title">数据驱动</h3>
+                    <p class="card-desc">凭感觉做事的时代过去了。报名转化、渠道效果、满意度评分——用数据说话。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #ffdd00, #ff6b35);">🤝</div>
+                    <h3 class="card-title">团队协作</h3>
+                    <p class="card-desc">一个人干不过一群人。清晰的分工、顺畅的沟通、默契的配合缺一不可。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #ff2d95, #b026ff);">🔧</div>
+                    <h3 class="card-title">应急预案</h3>
+                    <p class="card-desc">设备故障、嘉宾缺席、人太多/太少、天气突变——Plan B、Plan C 都要提前想好。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 统计 -->
+        <section class="section">
+            <h2 class="section-title">行业洞察</h2>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="78">0</div>
+                    <div class="stat-label">% 活动超预算</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="65">0</div>
+                    <div class="stat-label">% 参与者因体验差离开</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="92">0</div>
+                    <div class="stat-label">% 成功活动有详细计划</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="3">0</div>
+                    <div class="stat-label">x 优秀活动转化率</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <div class="footer-logo">EVENT PLANNING</div>
+            <p class="footer-text">Wilson · 活动策划知识库 · 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // 创建粒子
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const colors = ['#ff2d95', '#00f7ff', '#b026ff', '#ff6b35'];
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.boxShadow = `0 0 10px ${particle.style.background}, 0 0 20px ${particle.style.background}`;
+                container.appendChild(particle);
+            }
+        }
+
+        // 滚动显示动画
+        function handleScroll() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+
+        // 数字动画
+        function animateNumbers() {
+            const numbers = document.querySelectorAll('.stat-number');
+            numbers.forEach(num => {
+                const target = parseInt(num.dataset.target);
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const update = () => {
+                    current += step;
+                    if (current < target) {
+                        num.textContent = Math.floor(current);
+                        requestAnimationFrame(update);
+                    } else {
+                        num.textContent = target;
+                    }
+                };
+                
+                // 当元素可见时开始动画
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        update();
+                        observer.disconnect();
+                    }
+                });
+                observer.observe(num);
+            });
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            handleScroll();
+            animateNumbers();
+            window.addEventListener('scroll', handleScroll);
+        });
+
+        // 鼠标跟随光效
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            document.body.style.background = `
+                radial-gradient(600px at ${x}px ${y}px, rgba(176, 38, 255, 0.06), transparent 40%),
+                #0a0a0f
+            `;
+        });
+    </script>
+</body>
+</html>

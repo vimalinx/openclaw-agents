@@ -1,0 +1,33 @@
+{
+  "xiaohongshu": {
+    "cookies": "your_cookies_here",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+    "monitor_interval": 300,
+    "note_ids": []
+  },
+  "reply": {
+    "auto_reply": true,
+    "max_reply_per_note": 20,
+    "reply_delay": 5,
+    "follow_after_reply": true
+  },
+  "strategy": {
+    "keyword_based": true,
+    "sentiment_analysis": false,
+    "random_selection": true
+  },
+  "conversion": {
+    "private_message_threshold": 3,
+    "follow_suggestion_rate": 0.5,
+    "cta_phrases": [
+      "想了解更多",
+      "感兴趣",
+      "咨询",
+      "了解"
+    ]
+  },
+  "storage": {
+    "customer_db": "./data/customers.json",
+    "reply_log": "./logs/reply.log"
+  }
+}

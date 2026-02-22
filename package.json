@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@algora/sdk": "^0.3.1"
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "title": "OpenClaw v2.0 发布",
+    "url": "https://github.com/openclaw/openclaw/releases/tag/v2.0",
+    "description": "OpenClaw v2.0 正式发布，新增多个核心功能",
+    "date": "2026-02-21",
+    "source": "GitHub",
+    "type": "版本更新",
+    "is_major": true,
+    "reasons": [
+      "重大版本更新"
+    ]
+  },
+  {
+    "title": "AI 代理框架对比：OpenClaw vs 其他",
+    "url": "https://www.xiaohongshu.com/explore",
+    "description": "详细对比 OpenClaw 与其他 AI 代理框架的优缺点",
+    "date": "2026-02-21",
+    "source": "小红书",
+    "type": "分析报告",
+    "is_major": true,
+    "reasons": [
+      "深度分析报告"
+    ]
+  }
+]

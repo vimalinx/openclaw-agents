@@ -1,0 +1,11 @@
+# Cron Job 配置
+# 每天早晨 8 点自动推送 MediaCrawler 采集的 OpenClaw 重大事件报告
+
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin
+
+# 每天早晨 8 点执行
+0 8 * * * vimalinx /usr/bin/python3 /home/vimalinx/.openclaw/workspace/daily-opencraw-report.sh >> /home/vimalinx/.openclaw/workspace/daily-opencraw-report.log 2>&1
+
+# 每天晚上 8 点备份
+0 20 * * * vimalinx /usr/bin/python3 /home/vimalinx/.openclaw/workspace/backup-opencraw-data.sh >> /home/vimalinx/.openclaw/workspace/backup-opencraw-data.log 2>&1

@@ -1,0 +1,38 @@
+[
+  {
+    "timestamp": "2026-02-20 12:16",
+    "duration": 1.8e-05,
+    "topic": "AI工具",
+    "post_url": "https://www.xiaohongshu.com/mock/post/12345",
+    "feedback": {
+      "views": 0,
+      "likes": 0,
+      "collects": 0,
+      "comments": 0
+    }
+  },
+  {
+    "timestamp": "2026-02-20 22:56",
+    "duration": 2.8e-05,
+    "topic": "AI工具",
+    "post_url": "https://www.xiaohongshu.com/mock/post/12345",
+    "feedback": {
+      "views": 0,
+      "likes": 0,
+      "collects": 0,
+      "comments": 0
+    }
+  },
+  {
+    "timestamp": "2026-02-21 00:16",
+    "duration": 4.2e-05,
+    "topic": "AI工具",
+    "post_url": "https://www.xiaohongshu.com/mock/post/12345",
+    "feedback": {
+      "views": 0,
+      "likes": 0,
+      "collects": 0,
+      "comments": 0
+    }
+  }
+]

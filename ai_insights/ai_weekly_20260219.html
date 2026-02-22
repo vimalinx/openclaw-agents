@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>AI前沿周刊 2026.02.19 | AI Weekly Insights</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 11px;
+            line-height: 1.45;
+            color: #2C3E50;
+            background: white;
+        }
+
+        .container {
+            width: 794px;
+            margin: 0 auto;
+            background: white;
+        }
+
+        /* 封面 - 完整A4 */
+        .cover {
+            width: 794px;
+            height: 1123px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1600&h=900&fit=crop&q=80') center/cover;
+            position: relative;
+            color: white;
+            page-break-after: always;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.92) 0%, rgba(118, 75, 162, 0.88) 100%);
+        }
+
+        .cover > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 6px;
+        }
+
+        .cover .subtitle {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+            opacity: 0.95;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        .cover .divider {
+            width: 120px;
+            height: 3px;
+            background: rgba(255,255,255,0.7);
+            margin: 30px auto;
+        }
+
+        .cover .info {
+            font-size: 14px;
+            opacity: 0.9;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .cover .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin: 5px 10px;
+            font-size: 13px;
+        }
+
+        /* 内容页通用 */
+        .page {
+            width: 794px;
+            min-height: 1123px;
+            padding: 28px 40px;
+            position: relative;
+            background: white;
+            page-break-after: always;
+            page-break-inside: avoid;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 18px 24px;
+            margin: -28px -40px 20px -40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=400&fit=crop&q=80') center/cover;
+            opacity: 0.14;
+        }
+
+        .page-header h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 32px;
+            color: white;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 6px;
+            letter-spacing: 2px;
+        }
+
+        .page-header .meta {
+            font-size: 12px;
+            color: rgba(255,255,255,0.9);
+            position: relative;
+            z-index: 1;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* 统计卡片 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 12px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        /* 论文卡片 */
+        .paper-card {
+            background: #f8f9fc;
+            border-left: 4px solid #667eea;
+            padding: 14px 16px;
+            margin-bottom: 14px;
+            page-break-inside: avoid;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .paper-card:hover {
+            background: #f0f2f8;
+            transition: background 0.2s;
+        }
+
+        .paper-title {
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 6px;
+            line-height: 1.4;
+            font-size: 12px;
+        }
+
+        .paper-meta {
+            font-size: 10px;
+            color: #7f8c8d;
+            margin-bottom: 8px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 9px;
+            font-weight: 500;
+        }
+
+        .tag.security { background: #e74c3c; }
+        .tag.ml { background: #3498db; }
+        .tag.agent { background: #9b59b6; }
+        .tag.vision { background: #e67e22; }
+
+        .paper-summary {
+            color: #5a6c7d;
+            line-height: 1.6;
+            font-size: 11px;
+        }
+
+        .paper-highlight {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px 14px;
+            margin: 10px 0;
+            border-radius: 6px;
+        }
+
+        .highlight-title {
+            font-weight: 600;
+            color: #856404;
+            margin-bottom: 6px;
+            font-size: 11px;
+        }
+
+        /* 趋势分析 */
+        .trend-section {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 16px 18px;
+            border-radius: 12px;
+            margin: 16px 0;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .trend-title {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .trend-content {
+            color: #2C3E50;
+            line-height: 1.6;
+            font-size: 11px;
+        }
+
+        /* 项目卡片 */
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 14px;
+            page-break-inside: avoid;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+        }
+
+        .project-name {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 6px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .project-desc {
+            color: #5a6c7d;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            font-size: 11px;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 8px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .project-stats {
+            font-size: 10px;
+            color: #7f8c8d;
+            display: flex;
+            gap: 10px;
+        }
+
+        .project-tags span {
+            display: inline-block;
+            background: #f0f2f5;
+            color: #5a6c7d;
+            padding: 2px 7px;
+            border-radius: 4px;
+            margin-right: 4px;
+            font-size: 9px;
+        }
+
+        /* 要点列表 */
+        .key-points {
+            background: white;
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid #e9ecef;
+        }
+
+        .key-points li {
+            color: #2C3E50;
+            line-height: 1.6;
+            margin-bottom: 6px;
+            font-size: 11px;
+            padding-left: 4px;
+        }
+
+        /* 装饰图片 */
+        .decor-image {
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+            width: 180px;
+            height: 130px;
+            opacity: 0.25;
+            background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=300&fit=crop&q=80') center/cover;
+            border-radius: 10px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 15px;
+            border-top: 1px solid #e9ecef;
+            margin-top: 20px;
+            color: #7f8c8d;
+            font-size: 10px;
+        }
+
+        /* 打印优化 */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .page {
+                page-break-after: always;
+            }
+        }
+
+        /* 图标 */
+        .icon { font-size: 14px; margin-right: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 封面 -->
+        <div class="cover">
+            <div class="subtitle">AI前沿周刊</div>
+            <h1>AI WEEKLY</h1>
+            <div class="divider"></div>
+            <div class="subtitle">2026.02.19</div>
+            <div class="info" style="margin-top: 30px;">
+                <p>第8周 | Week 8</p>
+                <p>涵盖论文 · 技术 · 趋势 · 项目</p>
+            </div>
+            <div style="margin-top: 35px;">
+                <span class="badge">📚 精选论文</span>
+                <span class="badge">🔥 热点趋势</span>
+                <span class="badge">🛠️ 开源项目</span>
+            </div>
+        </div>
+
+        <!-- 本周概览 -->
+        <div class="page">
+            <div class="decor-image"></div>
+            <div class="page-header">
+                <h2>本周概览</h2>
+                <div class="meta">Weekly Overview | Week 8</div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">精选论文</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">核心趋势</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">热门项目</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">技术方向</div>
+                </div>
+            </div>
+
+            <div class="trend-section">
+                <div class="trend-title">🎯 本周核心关注</div>
+                <div class="trend-content">
+                    AI代理安全成为焦点，确定性政策执行框架首次提出。大模型与实验室场景的结合研究引发讨论，推理效率优化持续深化。开源生态中，多智能体框架和工具链继续快速发展。
+                </div>
+            </div>
+
+            <div class="trend-section" style="background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%); border-color: rgba(118, 75, 162, 0.2);">
+                <div class="trend-title">📈 行业动态</div>
+                <ul class="key-points" style="background: transparent; border: none; padding: 0;">
+                    <li>Anthropic更新API使用政策，明确禁止第三方使用订阅授权</li>
+                    <li>Tailscale推出Peer Relays通用版本，改善网络连接</li>
+                    <li>15年FP64分割模式被Blackwell Ultra打破，GPU架构演进</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 论文精选 -->
+        <div class="page">
+            <div class="page-header">
+                <h2>精选论文</h2>
+                <div class="meta">Selected Research Papers</div>
+            </div>
+
+            <!-- 论文1 -->
+            <div class="paper-card">
+                <div class="paper-title">Policy Compiler for Secure Agentic Systems (PCAS)</div>
+                <div class="paper-meta">
+                    <span class="tag security">安全</span>
+                    <span>Nils Palumbo et al. | Stanford</span>
+                </div>
+                <div class="paper-summary">
+                    首次提出AI代理系统的确定性政策执行框架。通过将代理系统状态建模为依赖图，跟踪工具调用、工具结果和消息之间的因果关系，提供独立于模型推理的确定性安全保证。
+                </div>
+                <div class="paper-highlight">
+                    <div class="highlight-title">💡 核心突破</div>
+                    <div>解决了嵌入prompt的政策无法提供执行保证的问题，采用Datalog衍生语言表达政策，在执行前拦截违规操作。</div>
+                </div>
+            </div>
+
+            <!-- 论文2 -->
+            <div class="paper-card">
+                <div class="paper-title">Calibrate-Then-Act: Cost-Aware Exploration in LLM Agents</div>
+                <div class="paper-meta">
+                    <span class="tag agent">代理</span>
+                    <span>UT Austin | Wenxuan Ding et al.</span>
+                </div>
+                <div class="paper-summary">
+                    针对LLM代理与环境交互时的成本-不确定性权衡问题，提出一种探索策略。在编程任务中，模型应对代码不确定性时选择测试，而非盲目生成，平衡探索成本和性能。
+                </div>
+            </div>
+
+            <!-- 论文3 -->
+            <div class="paper-card">
+                <div class="paper-title">Measuring LLM-Assistance on Novice Biology Performance</div>
+                <div class="paper-meta">
+                    <span class="tag ml">评估</span>
+                    <span>预注册随机对照试验 | n=153</span>
+                </div>
+                <div class="paper-summary">
+                    首个实地研究评估LLM是否提升新手在生物学实验室任务中的表现。模拟病毒反向遗传工作流程，测量AI辅助对实验技能获取的真实影响。
+                </div>
+            </div>
+
+            <!-- 论文4 -->
+            <div class="paper-card">
+                <div class="paper-title">Knowledge-Embedded Latent Projection for Robust Representation</div>
+                <div class="paper-meta">
+                    <span class="tag ml">表征学习</span>
+                    <span>Weijing Tang et al.</span>
+                </div>
+                <div class="paper-summary">
+                    通过知识嵌入的潜在投影方法，提升表征学习的鲁棒性。将领域知识融入表示空间，改善模型对分布外数据的泛化能力。
+                </div>
+            </div>
+        </div>
+
+        <!-- 趋势分析 -->
+        <div class="page">
+            <div class="page-header">
+                <h2>趋势分析</h2>
+                <div class="meta">Trend Analysis & Insights</div>
+            </div>
+
+            <div class="trend-section" style="background: linear-gradient(135deg, #e74c3c12 0%, #c0392b12 100%); border-color: rgba(231, 76, 60, 0.3);">
+                <div class="trend-title" style="color: #e74c3c;">🔒 AI代理安全化</div>
+                <div class="trend-content">
+                    随着AI代理在客户服务、审批流程、数据访问等场景的部署增多，安全性成为核心议题。本周PCAS框架的提出，标志着从"软约束"（prompt工程）向"硬保证"（确定性执行）的转变，未来类似的安全框架将持续涌现。
+                </div>
+            </div>
+
+            <div class="trend-section" style="background: linear-gradient(135deg, #3498db12 0%, #2980b912 100%); border-color: rgba(52, 152, 219, 0.3);">
+                <div class="trend-title" style="color: #3498db;">⚡ 推理效率优化</div>
+                <div class="trend-content">
+                    Cost-aware exploration方法反映了业界对LLM推理成本的关注。在实际应用中，需要在性能和成本之间找到平衡点。类似思路已在代码生成、知识检索等场景出现，未来将出现更多针对推理效率的优化方案。
+                </div>
+            </div>
+
+            <div class="trend-section" style="background: linear-gradient(135deg, #9b59b612 0%, #8e44ad12 100%); border-color: rgba(155, 89, 182, 0.3);">
+                <div class="trend-title" style="color: #9b59b6;">🧪 AI与实验室场景融合</div>
+                <div class="trend-content">
+                    从理论评估转向实地研究是重要趋势。LLM在科学实验、代码编写、数据分析等场景的实际效果需要严谨的实验验证，预注册、双盲、随机对照等科学方法将被更多采用。
+                </div>
+            </div>
+
+            <div style="margin-top: 20px; padding: 16px; background: white; border-radius: 8px; border: 1px solid #e9ecef;">
+                <div style="font-weight: 600; color: #2C3E50; margin-bottom: 10px; font-size: 12px;">📊 技术方向追踪</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div>
+                        <div style="color: #667eea; font-weight: 600; margin-bottom: 4px;">多智能体系统</div>
+                        <div style="color: #5a6c7d; font-size: 10px;">协作架构、通信协议、任务分解</div>
+                    </div>
+                    <div>
+                        <div style="color: #667eea; font-weight: 600; margin-bottom: 4px;">模型推理加速</div>
+                        <div style="color: #5a6c7d; font-size: 10px;">量化压缩、缓存机制、批处理</div>
+                    </div>
+                    <div>
+                        <div style="color: #667eea; font-weight: 600; margin-bottom: 4px;">RAG系统优化</div>
+                        <div style="color: #5a6c7d; font-size: 10px;">检索精度、混合检索、知识图谱</div>
+                    </div>
+                    <div>
+                        <div style="color: #667eea; font-weight: 600; margin-bottom: 4px;">工具链生态</div>
+                        <div style="color: #5a6c7d; font-size: 10px;">Agent框架、评估工具、监控平台</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 开源项目 -->
+        <div class="page">
+            <div class="page-header">
+                <h2>开源精选</h2>
+                <div class="meta">Open Source Projects</div>
+            </div>
+
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-name">
+                        <span class="icon">🤖</span>AutoGen
+                    </div>
+                    <div class="project-desc">
+                        Microsoft推出，首个支持多智能体对话、协作和编程的框架。支持可定制对话模式，解决复杂任务。
+                    </div>
+                    <div class="project-meta">
+                        <div class="project-tags">
+                            <span>多智能体</span><span>LLM</span>
+                        </div>
+                        <div class="project-stats">⭐ 28K</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">
+                        <span class="icon">🦜</span>LangChain
+                    </div>
+                    <div class="project-desc">
+                        LLM应用开发框架，强调可组合性。提供RAG、工具调用、记忆管理等组件，生态最活跃。
+                    </div>
+                    <div class="project-meta">
+                        <div class="project-tags">
+                            <span>LLM</span><span>RAG</span>
+                        </div>
+                        <div class="project-stats">⭐ 76K</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">
+                        <span class="icon">🚀</span>vLLM
+                    </div>
+                    <div class="project-desc">
+                        高吞吐量、内存高效的LLM推理引擎。PagedAttention技术，支持多种模型，部署首选。
+                    </div>
+                    <div class="project-meta">
+                        <div class="project-tags">
+                            <span>推理加速</span><span>部署</span>
+                        </div>
+                        <div class="project-stats">⭐ 21K</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">
+                        <span class="icon">💻</span>Open Interpreter
+                    </div>
+                    <div class="project-desc">
+                        让LLM在计算机上执行代码（Python、JS、Shell等），本地化AI助手，代码执行能力突出。
+                    </div>
+                    <div class="project-meta">
+                        <div class="project-tags">
+                            <span>代码执行</span><span>工具</span>
+                        </div>
+                        <div class="project-stats">⭐ 46K</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">
+                        <span class="icon">🎨</span>ComfyUI
+                    </div>
+                    <div class="project-desc">
+                        强大的模块化Stable Diffusion GUI。节点式工作流，生态插件丰富，图像生成首选。
+                    </div>
+                    <div class="project-meta">
+                        <div class="project-tags">
+                            <span>图像生成</span><span>GUI</span>
+                        </div>
+                        <div class="project-stats">⭐ 39K</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-name">
+                        <span class="icon">🧠</span>LlamaIndex
+                    </div>
+                    <div class="project-desc">
+                        数据框架，专为LLM构建。索引、检索、查询优化，RAG系统核心组件。
+                    </div>
+                    <div class="project-meta">
+                        <div class="project-tags">
+                            <span>RAG</span><span>检索</span>
+                        </div>
+                        <div class="project-stats">⭐ 33K</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p>AI前沿周刊 2026.02.19 | 第8周</p>
+                <p>数据来源：arXiv、Hacker News、GitHub、社区讨论</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+{
+  "test_start_time": "2026-02-20T01:43:02.001810",
+  "test_end_time": "2026-02-20T01:43:27.527668",
+  "test_duration_seconds": 25.525843858718872,
+  "test_duration_minutes": 0.42543073097864786,
+  "summary": {
+    "total_phases": 4,
+    "total_tests": 4,
+    "passed_tests": 4,
+    "failed_tests": 0,
+    "success_rate": 100.0,
+    "overall_status": "success"
+  },
+  "phases": {
+    "phase1": {
+      "test_name": "市场情报",
+      "status": "completed",
+      "bocha_results": 8,
+      "xhs_notes": 15,
+      "hot_topics": 5,
+      "duration": 11.51143503189087
+    },
+    "phase2": {
+      "test_name": "内容创作",
+      "status": "completed",
+      "generated_contents": 5,
+      "generated_covers": 5,
+      "duration": 5.004902362823486
+    },
+    "phase3": {
+      "test_name": "自动发布",
+      "status": "completed",
+      "total_posts": 5,
+      "success_count": 4,
+      "success_rate": 0.8,
+      "duration": 6.005026340484619
+    },
+    "phase4": {
+      "test_name": "数据分析",
+      "status": "completed",
+      "data_points": 10,
+      "total_views": 4875,
+      "total_likes": 2325,
+      "duration": 3.0042836666107178
+    }
+  },
+  "test_log": [
+    {
+      "timestamp": "2026-02-20T01:43:13.513267",
+      "test": "市场情报",
+      "status": "completed",
+      "duration": 11.51143503189087
+    },
+    {
+      "timestamp": "2026-02-20T01:43:18.518215",
+      "test": "内容创作",
+      "status": "completed",
+      "duration": 5.004902362823486
+    },
+    {
+      "timestamp": "2026-02-20T01:43:24.523297",
+      "test": "自动发布",
+      "status": "completed",
+      "duration": 6.005026340484619
+    },
+    {
+      "timestamp": "2026-02-20T01:43:27.527632",
+      "test": "数据分析",
+      "status": "completed",
+      "duration": 3.0042836666107178
+    }
+  ],
+  "key_metrics": {
+    "total_market_intelligence": 8,
+    "total_content_created": 5,
+    "total_published": 5,
+    "publish_success_rate": 0.8,
+    "total_data_analyzed": 10
+  }
+}

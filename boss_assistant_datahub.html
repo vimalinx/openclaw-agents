@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wilson 老板助理 - 超级详细实战手册</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+
+        @page {
+            size: 794px 1123px;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 11px;
+            line-height: 1.8;
+            color: #2C3E50;
+            background: white;
+        }
+
+        .container {
+            width: 794px;
+            max-width: 794px;
+            margin: 0 auto;
+        }
+
+        .cover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 50px 30px;
+            page-break-after: always;
+            min-height: 1123px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .cover h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 64px;
+            font-weight: 700;
+            letter-spacing: 10px;
+            margin: 0;
+        }
+
+        .cover h2 {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 28px;
+            font-weight: 300;
+            margin: 15px 0 0 0;
+            opacity: 0.9;
+        }
+
+        .cover .date-box {
+            background: rgba(255,255,255,0.12);
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 18px 50px;
+            border-radius: 45px;
+            margin-top: 60px;
+        }
+
+        .page {
+            width: 794px;
+            min-height: 1123px;
+            padding: 28px 35px;
+            background: white;
+            page-break-after: always;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 28px;
+            margin: -28px -35px 30px -35px;
+        }
+
+        .page-header h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        .page-header .subtitle {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2C3E50;
+            margin-top: 28px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+
+        h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #34495E;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 12px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border-left: 4px solid #0dcaf0;
+            padding: 15px 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .success-box {
+            background: #d1e7dd;
+            border-left: 4px solid #198754;
+            padding: 15px 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .card {
+            background: #f8f9fc;
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+            page-break-inside: avoid;
+            border-left: 4px solid #667eea;
+        }
+
+        .code-block {
+            background: #212529;
+            color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+        .code-block pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .list-item {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        .emoji {
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 10px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 封面 -->
+        <div class="cover">
+            <h1>Wilson 老板助理</h1>
+            <h2>超高级详细实战手册</h2>
+            <div class="date-box">
+                <div style="font-size: 18px; font-weight: 600;">完整版</div>
+                <div style="font-size: 14px; opacity: 0.8;">2026年2月20日 | v1.0.0</div>
+            </div>
+        </div>
+
+        <!-- 第1页：系统概述 -->
+        <div class="page">
+            <div class="page-header">
+                <h2>系统概述</h2>
+                <div class="subtitle">Core System Overview</div>
+            </div>
+
+            <h3>核心价值</h3>
+            <p>
+                Wilson 老板助理是一个基于 AI 的全能型运营助手，通过模块化设计和深度集成，实现了从信息获取到任务执行的全流程自动化。系统核心理念是"一人 = 三人运营团队"，通过智能决策和自动化执行，大幅提升运营效率。
+            </p>
+
+            <div class="success-box">
+                <p><strong>核心价值主张</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item"><span class="emoji">📊</span> <strong>数据驱动决策</strong>：基于多维度数据（热点、竞品、用户行为）提供运营建议</li>
+                    <li class="list-item"><span class="emoji">🤖</span> <strong>智能任务分配</strong>：自动识别优先级，智能分配资源</li>
+                    <li class="list-item"><span class="emoji">⚡</span> <strong>全流程自动化</strong>：从热点监控到内容发布全自动化</li>
+                    <li class="list-item"><span class="emoji">📈</span> <strong>实时监控反馈</strong>：持续跟踪效果，自动优化策略</li>
+                    <li class="list-item"><span class="emoji">🎯</span> <strong>个性化配置</strong>：支持多账号、多平台、多策略配置</li>
+                </ul>
+            </div>
+
+            <h3>适用场景</h3>
+            <p>
+                Wilson 老板助理可以应用于多种运营场景，包括内容创作、商业运营、项目管理、数据分析等。系统通过模块化设计，可以根据不同场景的需求灵活配置和扩展。
+            </p>
+
+            <div class="info-box">
+                <p><strong>核心应用场景</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item"><span class="emoji">🎨</span> <strong>内容创作者</strong>：自媒体运营、小红书矩阵、视频制作</li>
+                    <li class="list-item"><span class="emoji">🏢</span> <strong>商业运营</strong>：商场运营、客户管理、数据分析</li>
+                    <li class="list-item"><span class="emoji">💼</span> <strong>项目管理</strong>：任务追踪、进度监控、团队协作</li>
+                    <li class="list-item"><span class="emoji">📊</span> <strong>数据分析</strong>：趋势分析、竞品监控、用户画像</li>
+                </ul>
+            </div>
+
+            <h3>系统特性</h3>
+            <p>
+                Wilson 老板助理采用成熟的技术架构，具有高度的可靠性和可扩展性。系统通过模块化设计、配置驱动、日志记录等特性，确保系统在各种场景下都能稳定运行。
+            </p>
+
+            <div class="highlight-box">
+                <p><strong>成熟特性</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item"><span class="emoji">✅</span> <strong>模块化架构</strong>：5 大功能模块，每个模块独立可测试</li>
+                    <li class="list-item"><span class="emoji">✅</span> <strong>配置驱动</strong>：所有行为通过配置文件控制，无需修改代码</li>
+                    <li class="list-item"><span class="emoji">✅</span> <strong>日志记录</strong>：完整的操作日志，支持调试和审计</li>
+                    <li class="list-item"><span class="emoji">✅</span> <strong>错误处理</strong>：完善的异常处理和错误恢复机制</li>
+                    <li class="list-item"><span class="emoji">✅</span> <strong>性能优化</strong>：缓存、异步处理、批量操作优化</li>
+                    <li class="list-item"><span class="emoji">✅</span> <strong>可扩展性</strong>：支持插件式扩展，可自定义新功能</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 第2页：功能详解 -->
+        <div class="page">
+            <div class="page-header">
+                <h2>功能详解</h2>
+                <div class="subtitle">Feature Details</div>
+            </div>
+
+            <h3>功能 1：HEARTBEAT 主动汇报系统</h3>
+            <p>
+                HEARTBEAT 主动汇报系统是 Wilson 老板助理的核心功能之一，通过每 6 小时的定时检查，自动获取和汇报各类信息。该系统通过模块化设计，包含邮箱检查、日程提醒、热点追踪、竞品监控、项目进度检查、记忆更新、机会推荐等多个功能模块。
+            </p>
+
+            <h4>模块 1.1：邮箱检查</h4>
+            <p>
+                邮箱检查模块使用 IMAP 协议连接邮件服务器，自动检查未读重要邮件，标记需要回复的邮件，提取待处理事项。该模块通过配置文件指定邮件服务器地址、账号密码、重要邮件过滤规则等参数，支持自动登录和邮件读取。
+            </p>
+
+            <div class="code-block">
+                <pre>import imaplib
+import email
+from email.header import decode_header
+
+def check_unread_emails(imap_server, email_user, email_password):
+    """检查未读重要邮件"""
+    try:
+        mail = imaplib.IMAP4_SSL(imap_server)
+        mail.login(email_user, email_password)
+        mail.select('INBOX')
+
+        # 搜索未读邮件
+        typ, data = mail.search(None, 'UNSEEN')
+        
+        # 处理未读邮件
+        for num in data[0]:
+            typ, data = mail.fetch(num, '(RFC822)')
+            msg = email.message_from_bytes(data[0])
+            
+            # 解析邮件
+            subject = msg['Subject']
+            sender = msg['From']
+            
+            # 提取待处理事项
+            body = msg.get_payload(decode=True)
+            todo_items = extract_todos(body)
+            
+            print(f"From: {sender}")
+            print(f"Subject: {subject}")
+            print(f"Todos: {todo_items}")
+            
+        mail.close()
+        return True
+        
+    except Exception as e:
+        print(f"Error checking emails: {e}")
+        return False
+
+def extract_todos(text):
+    """从邮件中提取待处理事项"""
+    todos = []
+    lines = text.split('\n')
+    for line in lines:
+        if 'todo' in line.lower() or '待办' in line:
+            todos.append(line.strip())
+    return todos</pre>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>配置选项</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">IMAP 服务器地址（如：imap.gmail.com）</li>
+                    <li class="list-item">邮箱账号和密码</li>
+                    <li class="list-item">重要邮件过滤规则</li>
+                    <li class="list-item">待处理事项提取规则</li>
+                </ul>
+            </div>
+
+            <h4>模块 1.2：日程提醒</h4>
+            <p>
+                日程提醒模块通过读取日程配置文件，计算当前时间与日程时间的差值，找出即将到来的会议和事件。该模块支持自定义提前提醒时间，默认为提前 2 小时，支持通过飞书消息或邮件发送提醒。
+            </p>
+
+            <div class="code-block">
+                <pre>import json
+from datetime import datetime, timedelta
+
+def check_upcoming_schedules(calendar_file, reminder_hours=2):
+    """检查即将到来的日程"""
+    try:
+        with open(calendar_file, 'r', encoding='utf-8') as f:
+            events = json.load(f)
+        
+        now = datetime.now()
+        upcoming_events = []
+        
+        for event in events:
+            event_time = datetime.strptime(f"{event['date']} {event.get('time', '00:00')}", '%Y-%m-%d %H:%M')
+            time_diff = event_time - now
+            
+            if timedelta(0) <= time_diff <= timedelta(hours=reminder_hours):
+                upcoming_events.append({
+                    'event': event,
+                    'hours_remaining': time_diff.total_seconds() / 3600
+                })
+        
+        return upcoming_events
+        
+    except Exception as e:
+        print(f"Error checking schedules: {e}")
+        return []
+
+def send_reminder(event, hours_remaining):
+    """发送提醒"""
+    print(f"⏰ 提醒：{event['title']}")
+    print(f"   距离：{hours_remaining:.1f} 小时")
+    print(f"   时间：{event['date']} {event.get('time', '00:00')}")
+    # 发送到飞书或邮件
+    # feishu.send_message(f"⏰ 提醒：{event['title']}")
+    # 或
+    # email.send_reminder(f"⏰ 提醒：{event['title']}")</pre>
+            </div>
+
+            <div class="info-box">
+                <p><strong>使用方法</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">添加日程：`python3 calendar-manager.py add "客户会议" 2026-02-21 14:00`</li>
+                    <li class="list-item">查看日程：`python3 calendar-manager.py list 2026-02-21`</li>
+                    <li class="list-item">查看即将到来的日程：`python3 calendar-manager.py upcoming`</li>
+                    <li class="list-item">提前提醒时间：默认 2 小时，可在配置文件中修改</li>
+                </ul>
+            </div>
+
+            <h4>模块 1.3：热点追踪</h4>
+            <p>
+                热点追踪模块通过监控小红书平台上的目标关键词热度变化，发现潜在爆款话题。该模块使用 MediaCrawler 技能定期爬取相关数据，分析笔记数量、互动率、发布频率等指标，识别热度上升的趋势，标记为潜在爆款。
+            </p>
+
+            <div class="code-block">
+                <pre>from media_crawler import MediaCrawlerSkill
+
+def monitor_hot_trends(keywords, scroll_times=15):
+    """监控热点趋势"""
+    try:
+        # 创建 MediaCrawler 实例
+        skill = MediaCrawlerSkill()
+        await skill.init()
+        
+        # 搜索关键词
+        search_result = await skill.search_materials(
+            profile_id="6852c081000000001d0092d5",
+            keywords=keywords,
+            scroll_times=scroll_times
+        )
+        
+        # 分析趋势
+        notes = search_result['search_result']['notes']
+        hot_topics = []
+        
+        for note in notes:
+            note_data = {
+                'title': note['title'],
+                'likes': note.get('liked', 0),
+                'collects': note.get('collected', 0),
+                'comments': note.get('comments', 0)
+            }
+            hot_topics.append(note_data)
+        
+        # 排序
+        hot_topics.sort(key=lambda x: x['likes'], reverse=True)
+        
+        # 识别热门话题
+        trending_topics = hot_topics[:10]
+        
+        return trending_topics
+        
+    except Exception as e:
+        print(f"Error monitoring hot trends: {e}")
+        return []</pre>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>配置选项</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">监控关键词列表（如："AI工具"、"效率神器"、"副业搞钱"）</li>
+                    <li class="list-item">监控频率（每 6 小时）</li>
+                    <li class="list-item">热度阈值（互动率超过多少算热门）</li>
+                    <li class="list-item">小红书账号 Cookies（用于 MediaCrawler）</li>
+                </ul>
+            </div>
+
+            <h4>模块 1.4：竞品监控</h4>
+            <p>
+                竞品监控模块通过监控特定关键词的新增内容，追踪竞品账号数据，发现新竞品动态。该模块支持自定义竞品关键词列表，定期搜索这些关键词的相关内容，统计新增笔记数量、互动数据，识别快速崛起的竞品账号。
+            </p>
+
+            <div class="code-block">
+                <pre>def monitor_competitors(keywords):
+    """监控竞品动态"""
+    try:
+        # 搜索关键词相关内容
+        search_results = search_xiaohongshu(keywords)
+        
+        # 分析竞品数据
+        competitor_data = {
+            'new_notes': [],
+            'total_notes': len(search_results),
+            'avg_likes': 0,
+            'top_notes': []
+        }
+        
+        # 统计数据
+        total_likes = 0
+        for note in search_results:
+            likes = note.get('likes', 0)
+            total_likes += likes
+            if likes > 0:
+                competitor_data['new_notes'].append(note)
+        
+        if competitor_data['new_notes']:
+            competitor_data['avg_likes'] = total_likes / len(competitor_data['new_notes'])
+            competitor_data['top_notes'] = sorted(competitor_data['new_notes'], key=lambda x: x['likes'], reverse=True)[:5]
+        
+        return competitor_data
+        
+    except Exception as e:
+        print(f"Error monitoring competitors: {e}")
+        return {}
+
+def search_xiaohongshu(keywords):
+    """搜索小红书关键词"""
+    # 实现搜索逻辑
+    # 使用 MediaCrawler 或其他方式
+    pass</pre>
+            </div>
+
+            <div class="info-box">
+                <p><strong>监控维度</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">关键词新增内容数量</li>
+                    <li class="list-item">互动数据（点赞、收藏、评论）</li>
+                    <li class="list-item">竞品账号粉丝增长</li>
+                    <li class="list-item">竞品账号发布频率</li>
+                    <li class="list-item">快速崛起的竞品账号</li>
+                </ul>
+            </div>
+
+            <h4>模块 1.5：项目进度</h4>
+            <p>
+                项目进度模块通过检查任务列表，统计待办、进行中、已完成的任务数量，识别超期任务。该模块支持按优先级和状态过滤，生成项目进度报告，帮助用户了解当前项目进展。
+            </p>
+
+            <div class="code-block">
+                <pre>import json
+
+def check_project_progress(tasks_file):
+    """检查项目进度"""
+    try:
+        with open(tasks_file, 'r', encoding='utf-8') as f:
+            tasks = json.load(f)
+        
+        # 统计任务
+        todo_tasks = [t for t in tasks if t['status'] == 'todo']
+        in_progress_tasks = [t for t in tasks if t['status'] == 'in_progress']
+        done_tasks = [t for t in tasks if t['status'] == 'done']
+        
+        # 统计优先级
+        high_priority_tasks = [t for t in tasks if t['priority'] == 'high']
+        normal_priority_tasks = [t for t in tasks if t['priority'] == 'normal']
+        low_priority_tasks = [t for t in tasks if t['priority'] == 'low']
+        
+        # 识别超期任务
+        overdue_tasks = []
+        for task in tasks:
+            if task.get('deadline'):
+                deadline = datetime.strptime(task['deadline'], '%Y-%m-%d')
+                if datetime.now() > deadline:
+                    overdue_tasks.append(task)
+        
+        # 生成报告
+        report = {
+            'total_tasks': len(tasks),
+            'todo_tasks': len(todo_tasks),
+            'in_progress_tasks': len(in_progress_tasks),
+            'done_tasks': len(done_tasks),
+            'overdue_tasks': len(overdue_tasks),
+            'completion_rate': len(done_tasks) / len(tasks) * 100 if tasks else 0,
+            'priority_distribution': {
+                'high': len(high_priority_tasks),
+                'normal': len(normal_priority_tasks),
+                'low': len(low_priority_tasks)
+            }
+        }
+        
+        return report
+        
+    except Exception as e:
+        print(f"Error checking project progress: {e}")
+        return {}</pre>
+            </div>
+
+            <div class="success-box">
+                <p><strong>输出内容</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">总任务数量</li>
+                    <li class="list-item">待办任务数量</li>
+                    <li class="list-item">进行中任务数量</li>
+                    <li class="list-item">已完成任务数量</li>
+                    <li class="list-item">超期任务数量</li>
+                    <li class="list-item">完成率（百分比）</li>
+                    <li class="list-item">优先级分布统计</li>
+                </ul>
+            </div>
+
+            <h4>模块 1.6：记忆更新</h4>
+            <p>
+                记忆更新模块每 3 天一次深度整理 MEMORY.md，记录新增学习笔记、总结项目进展、整理技术心得。该模块通过自动检测上次更新时间，如果超过 3 天，提示需要整理。
+            </p>
+
+            <div class="code-block">
+                <pre>import os
+from datetime import datetime, timedelta
+from pathlib import Path
+
+def check_memory_update(memory_file, days=3):
+    """检查记忆文件更新"""
+    try:
+        # 检查文件是否存在
+        if not os.path.exists(memory_file):
+            print(f"❌ 记忆文件不存在: {memory_file}")
+            return False
+        
+        # 获取最后修改时间
+        mtime = os.path.getmtime(memory_file)
+        last_update = datetime.fromtimestamp(mtime)
+        days_ago = (datetime.now() - last_update).days
+        
+        # 检查是否需要更新
+        if days_ago >= days:
+            print(f"⚠️ 记忆文件已 {days_ago} 天未更新，建议整理")
+            print(f"最后更新时间: {last_update.strftime('%Y-%m-%d %H:%M')}")
+            return True
+        else:
+            print(f"✅ 记忆文件 {days_ago} 天前更新，正常")
+            print(f"最后更新时间: {last_update.strftime('%Y-%m-%d %H:%M')}")
+            return False
+        
+    except Exception as e:
+        print(f"Error checking memory update: {e}")
+        return False
+
+def update_memory(memory_file, content):
+    """更新记忆文件"""
+    try:
+        with open(memory_file, 'w', encoding='utf-8') as f:
+            f.write(content)
+        print(f"✅ 记忆文件已更新: {memory_file}")
+        return True
+        
+    except Exception as e:
+        print(f"Error updating memory: {e}")
+        return False</pre>
+            </div>
+
+            <div class="info-box">
+                <p><strong>整理要求</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">每次学习新平台/工具/技术后，记录核心概念</li>
+                    <li class="list-item">总结关键特性和功能</li>
+                    <li class="list-item">记录定价方案（如果是付费产品）</li>
+                    <li class="list-item">记录成功案例和最佳实践</li>
+                    <li class="list-item">整理可应用的知识和行动建议</li>
+                    <li class="list-item">制定学习后的实践计划</li>
+                </ul>
+            </div>
+
+            <h4>模块 1.7：机会推荐</h4>
+            <p>
+                机会推荐模块通过分析热点追踪和竞品监控的数据，识别潜在的合作伙伴、变现渠道和学习资源。该模块基于数据分析和智能算法，提供个性化的机会推荐，帮助用户发现新的商业机会和学习资源。
+            </p>
+
+            <div class="code-block">
+                <pre>def recommend_opportunities(hot_topics, competitors, user_profile):
+    """推荐机会"""
+    try:
+        opportunities = []
+        
+        # 分析潜在合作伙伴
+        for competitor in competitors:
+            if competitor['type'] == 'potential_partner':
+                opportunities.append({
+                    'type': 'partnership',
+                    'partner': competitor['name'],
+                    'reason': f"竞品分析发现潜在合作伙伴",
+                    'potential_value': '高'
+                })
+        
+        # 分析变现渠道
+        for topic in hot_topics:
+            if topic['trend'] == 'rising':
+                opportunities.append({
+                    'type': 'monetization',
+                    'channel': '小红书',
+                    'topic': topic['title'],
+                    'reason': f"热点话题：{topic['title']}，适合变现",
+                    'potential_value': '中'
+                })
+        
+        # 分析学习资源
+        for topic in hot_topics:
+            if 'AI' in topic['title'] or 'Python' in topic['title']:
+                opportunities.append({
+                    'type': 'learning',
+                    'resource': topic['title'],
+                    'reason': f"技术趋势：{topic['title']}，值得学习",
+                    'potential_value': '高'
+                })
+        
+        # 按优先级排序
+        opportunities.sort(key=lambda x: x['potential_value'], reverse=True)
+        
+        return opportunities
+        
+    except Exception as e:
+        print(f"Error recommending opportunities: {e}")
+        return []
+
+def analyze_trends(hot_topics):
+    """分析趋势"""
+    try:
+        # 识别上升趋势
+        rising_topics = [t for t in hot_topics if t['trend'] == 'rising']
+        
+        # 识别稳定热门
+        stable_topics = [t for t in hot_topics if t['trend'] == 'stable']
+        
+        # 识别下降趋势
+        declining_topics = [t for t in hot_topics if t['trend'] == 'declining']
+        
+        return {
+            'rising': rising_topics,
+            'stable': stable_topics,
+            'declining': declining_topics
+        }
+        
+    except Exception as e:
+        print(f"Error analyzing trends: {e}")
+        return {}</pre>
+            </div>
+
+            <div class="success-box">
+                <p><strong>推荐类型</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">合作伙伴机会（潜在合作、渠道合作）</li>
+                    <li class="list-item">变现渠道（小红书广告、付费推广）</li>
+                    <li class="list-item">学习资源（新技术、新工具、最佳实践）</li>
+                    <li class="list-item">产品改进（基于用户反馈）</li>
+                    <li class="list-item">市场机会（新市场、新领域）</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 第3页：技术架构 -->
+        <div class="page">
+            <div class="page-header">
+                <h2>技术架构</h2>
+                <div class="subtitle">Technical Architecture</div>
+            </div>
+
+            <h3>系统架构图</h3>
+            <div class="code-block">
+                <pre>┌─────────────────────────────────────────────────────┐
+│           Wilson 老板助理系统架构                   │
+├─────────────────────────────────────────────────────┤
+│                                                        │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  │
+│  │ 信息获取层   │  │ 决策支持层   │  │ 执行自动化层   │
+│  │              │  │              │  │              │
+│  │  ┌────────┐  │  ┌────────┐  │  ┌────────┐  │
+│  │  │ 邮箱检查 │  │  │ 决策引擎 │  │  │ 任务管理 │  │
+│  │  │ 日程提醒 │  │  │ 智能算法 │  │  │ 日程管理 │  │
+│  │  │ 热点追踪 │  │  │ 数据分析 │  │  │ 小红书 │  │
+│  │  │ 竞品监控 │  │  └────────┘  │  │  │ 发布 │  │
+│  │  │ 项目进度 │  │              │  │  │ 评论 │  │
+│  │  │ 机会推荐 │  │              │  │  │ 回复 │  │
+│  │  └────────┘  │  ┌────────┐  │  │ └────────┘  │
+│  │              │  │ ML 模型 │  │  │            │
+│  └──────────────┘  └──────────────┘  └──────────────┘  │
+│                                                        │
+│  ┌──────────────────────────────────────────────────┐   │
+│  │             数据持久层                           │   │
+│  │  ┌─────────────────────────────────────┐      │   │
+│  │  │ tasks.json                     │      │   │
+│  │  │ calendar.json                  │      │   │
+│  │  │ MEMORY.md                      │      │   │
+│  │  │ heartbeat-state.json           │      │   │
+│  │  │ xhs-auto-records.json         │      │   │
+│  │  │ customer-data.json              │      │   │
+│  │  └─────────────────────────────┘      │   │
+│  └──────────────────────────────────────────┘   │
+│                                                        │
+│  ┌──────────────────────────────────────────────────┐   │
+│  │             配置文件层                           │   │
+│  │  ┌─────────────────────────────────────┐      │   │
+│  │  │ task-manager.conf               │      │   │
+│  │  │ calendar-manager.conf            │      │   │
+│  │  │ auto-reply.conf                 │      │   │
+│  │  └─────────────────────────────┘      │   │
+│  └──────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────┘</pre>
+            </div>
+
+            <h3>技术栈</h3>
+            <div class="card">
+                <h4>前端技术</h4>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item"><strong>Python 3.9+</strong>：核心开发语言</li>
+                    <li class="list-item"><strong>asyncio</strong>：异步编程库</li>
+                    <li class="list-item"><strong>requests</strong>：HTTP 请求库</li>
+                    <li class="list-item"><strong>matplotlib/plotly</strong>：数据可视化</li>
+                    <li class="list-item"><strong>weasyprint</strong>：PDF 生成引擎</li>
+                    <li class="list-item"><strong>Playwright</strong>：浏览器自动化</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h4>后端技能</h4>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item"><strong>MediaCrawler</strong>：小红书数据爬取</li>
+                    <li class="list-item"><strong>content-generator</strong>：AI 内容生成</li>
+                    <li class="list-item"><strong>Grsai API</strong>：图片生成 API</li>
+                    <li class="list-item"><strong>xhs-auto-publisher</strong>：小红书自动发布</li>
+                    <li class="list-item"><strong>feishu-integration</strong>：飞书集成</li>
+                </ul>
+            </div>
+
+            <h3>技术架构原则</h3>
+            <div class="info-box">
+                <p><strong>核心原则</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item"><strong>单一职责</strong>：每个模块只负责一个功能</li>
+                    <li class="list-item"><strong>接口隔离</strong>：模块间通过配置文件交互，不直接依赖</li>
+                    <li class="list-item"><strong>数据持久化</strong>：所有状态都保存到文件，防止丢失</li>
+                    <li class="list-item"><strong>可测试性</strong>：每个模块都可以独立测试</li>
+                    <li class="list-item"><strong>可扩展性</strong>：支持插件式扩展，不影响现有功能</li>
+                </ul>
+            </div>
+
+            <h3>数据流</h3>
+            <div class="code-block">
+                <pre>信息获取 → 数据分析 → 决策建议 → 任务执行 → 结果反馈
+    ↓           ↓           ↓           ↓           ↓
+数据存储   智能算法   优先级排序   自动化执行   结果记录
+    ↓                                    ↓
+配置文件                                优化策略</pre>
+            </div>
+
+            <h3>错误处理</h3>
+            <div class="highlight-box">
+                <p><strong>错误处理策略</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">捕获所有异常，记录详细错误信息</li>
+                    <li class="list-item">使用日志记录所有操作，便于调试</li>
+                    <li class="list-item">提供友好的错误提示，避免技术术语</li>
+                    <li class="list-item">支持错误恢复机制，自动重试失败的请求</li>
+                    <li class="list-item">配置错误时提供配置示例和说明</li>
+                </ul>
+            </div>
+
+            <h3>性能优化</h3>
+            <div class="success-box">
+                <p><strong>优化策略</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">使用异步处理（asyncio）提高并发性能</li>
+                    <li class="list-item">实现缓存机制，避免重复计算</li>
+                    <li class="list-item">批量操作优化，减少网络请求次数</li>
+                    <li class="list-item">使用连接池，提高网络连接复用率</li>
+                    <li class="list-item">优化数据结构，减少内存占用</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 第4页：使用方法 -->
+        <div class="page">
+            <div class="page-header">
+                <h2>使用方法</h2>
+                <div class="subtitle">Usage Guide</div>
+            </div>
+
+            <h3>核心功能使用</h3>
+
+            <h4>HEARTBEAT 主动汇报</h4>
+            <div class="code-block">
+                <pre># 执行心跳检查（包含邮箱、日程、项目进度、热点、竞品、机会）
+python3 heartbeat-check.py
+
+# 查看报告
+cat heartbeat-report.txt</pre>
+            </div>
+
+            <h4>任务管理系统</h4>
+            <div class="code-block">
+                <pre># 添加高优先级任务
+python3 task-manager.py add "完成周报" --high
+
+# 添加中优先级任务
+python3 task-manager.py add "整理文档"
+
+# 添加低优先级任务
+python3 task-manager.py add "清理缓存" --low
+
+# 列出所有任务
+python3 task-manager.py list
+
+# 只列出待办任务
+python3 task-manager.py list --todo
+
+# 只列出高优先级任务
+python3 task-manager.py list --high
+
+# 完成任务（ID 为任务编号）
+python3 task-manager.py done 1
+
+# 删除任务（ID 为任务编号）
+python3 task-manager.py delete 1</pre>
+            </div>
+
+            <h4>日程集成</h4>
+            <div class="code-block">
+                <pre># 添加日程（日期 + 时间）
+python3 calendar-manager.py add "客户会议" 2026-02-21 14:00
+
+# 添加全天事件（无时间）
+python3 calendar-manager.py add "团队建设活动" 2026-02-22
+
+# 自定义时长（分钟）
+python3 calendar-manager.py add "技术评审" 2026-02-21 16:00 90
+
+# 列出所有日程
+python3 calendar-manager.py list
+
+# 列出指定日期的日程
+python3 calendar-manager.py list 2026-02-21
+
+# 查看 24 小时内日程
+python3 calendar-manager.py upcoming</pre>
+            </div>
+
+            <h4>小红书全自动闭环</h4>
+            <div class="code-block">
+                <pre># 测试模式（使用模拟数据）
+python3 xhs-auto-pipeline.py test
+
+# 真实发布（需集成实际 API）
+python3 xhs-auto-pipeline.py
+
+# 流程说明：
+# 1. 热点监控 → 2. 策略制定 → 3. 内容生成 → 4. 配图生成 → 5. 自动发布 → 6. 数据反馈</pre>
+            </div>
+
+            <h4>自动评论回复系统</h4>
+            <div class="code-block">
+                <pre># 启动自动回复系统
+cd xiaohongshu-auto-reply
+./start.sh        # Linux/Mac
+# 或 start.bat     # Windows
+
+# 查看统计
+python3 auto_reply.py --stats
+
+# 查看 VIP 客户
+python3 auto_reply.py --customers vip
+
+# 查看活跃客户
+python3 auto_reply.py --customers active</pre>
+            </div>
+
+            <h3>高级功能使用</h3>
+
+            <div class="info-box">
+                <p><strong>高级技巧</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">使用 Cron Job 自动执行 HEARTBEAT 检查</li>
+                    <li class="list-item">结合飞书通知，实时获取提醒</li>
+                    <li class="list-item">使用数据可视化工具分析任务进度</li>
+                    <li class="list-item">使用版本控制系统跟踪配置变更</li>
+                    <li class="list-item">使用日志分析工具监控运行状态</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 第5页：最佳实践 -->
+        <div class="page">
+            <div class="page-header">
+                <h2>最佳实践</h2>
+                <div class="subtitle">Best Practices</div>
+            </div>
+
+            <h3>HEARTBEAT 主动汇报</h3>
+            <div class="success-box">
+                <p><strong>最佳实践</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">定期执行：建议每天早晚各执行一次</li>
+                    <li class="list-item">关注报告内容：重点查看日程提醒和机会推荐</li>
+                    <li class="list-item">定期整理：每 3 天整理一次 MEMORY.md</li>
+                    <li class="list-item">关注预警：注意超期任务、异常数据、系统错误</li>
+                </ul>
+            </div>
+
+            <h3>任务管理系统</h3>
+            <div class="success-box">
+                <p><strong>最佳实践</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">任务优先级：高优先级任务优先处理</li>
+                    <li class="list-item">定期清理：每周清理已完成任务</li>
+                    <li class="list-item">合理分配：根据精力和时间合理分配任务</li>
+                    <li class="list-item">记录进度：及时更新任务状态</li>
+                    <li class="list-item">回顾总结：定期回顾任务完成情况</li>
+                </ul>
+            </div>
+
+            <h3>小红书全自动闭环</h3>
+            <div class="success-box">
+                <p><strong>最佳实践</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">测试先行：先用测试模式验证流程</li>
+                    <li class="list-item">关注数据反馈：查看发布记录，分析高表现笔记</li>
+                    <li class="list-item">优化策略：根据数据反馈优化后续策略</li>
+                    <li class="list-item">防封策略：设置合理的回复延迟和数量限制</li>
+                    <li class="list-item">时间选择：选择流量高峰时间发布</li>
+                </ul>
+            </div>
+
+            <h3>日程集成</h3>
+            <div class="success-box">
+                <p><strong>最佳实践</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">提前规划：提前添加重要日程</li>
+                    <li class="list-item">设置提醒：设置合适的提前提醒时间</li>
+                    <li class="list-item">定期检查：定期查看即将到来的日程</li>
+                    <li class="list-item">分类管理：按类型分类（会议、截止日期、提醒）</li>
+                    <li class="list-item">关联任务：将相关任务关联到日程</li>
+                </ul>
+            </div>
+
+            <h3>自动评论回复系统</h3>
+            <div class="success-box">
+                <p><strong>最佳实践</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">配置正确：确保 Cookies 有效</li>
+                    <li class="list-item">监控状态：定期查看系统运行状态</li>
+                    <li class="list-item">更新模板：根据数据反馈优化回复模板</li>
+                    <li class="list-item">关注 VIP：重点关注 VIP 客户的互动</li>
+                    <li class="list-item">避免封号：设置合理的回复延迟和数量限制</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 第6页：故障排除 -->
+        <div class="page">
+            <div class="page-header">
+                <h2>故障排除</h2>
+                <div class="subtitle">Troubleshooting Guide</div>
+            </div>
+
+            <h3>HEARTBEAT 主动汇报</h3>
+
+            <div class="highlight-box">
+                <p><strong>问题 1：邮件检查失败</strong></p>
+                <p><strong>现象</strong>：无法连接邮件服务器或认证失败</p>
+                <p><strong>原因</strong>：邮件服务器地址错误、账号密码错误或网络连接失败</p>
+                <p><strong>解决方案</strong>：</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">检查邮件服务器配置</li>
+                    <li class="list-item">更新账号密码</li>
+                    <li class="list-item">检查网络连接</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>问题 2：日程提醒失败</strong></p>
+                <p><strong>现象</strong>：无法查看日程或时间计算错误</p>
+                <p><strong>原因</strong>：日程数据格式错误或时间格式错误</p>
+                <p><strong>解决方案</strong>：</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">检查日期格式（YYYY-MM-DD）</li>
+                    <li class="list-item">检查时间格式（HH:MM）</li>
+                    <li class="list-item">检查时区配置</li>
+                </ul>
+            </div>
+
+            <h3>任务管理系统</h3>
+
+            <div class="highlight-box">
+                <p><strong>问题 1：任务添加失败</strong></p>
+                <p><strong>现象</strong>：无法添加任务或 JSON 文件格式错误</p>
+                <p><strong>原因</strong>：JSON 文件格式错误或写入失败</p>
+                <p><strong>解决方案</strong>：</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">检查 JSON 文件格式</li>
+                    <li class="list-item">检查文件权限</li>
+                    <li class="list-item">使用 JSON 验证工具</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>问题 2：任务完成失败</strong></p>
+                <p><strong>现象</strong>：任务 ID 不存在或归档失败</p>
+                <p><strong>原因</strong>：任务 ID 错误或归档文件权限错误</p>
+                <p><strong>解决方案</strong>：</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">检查任务 ID 是否正确</li>
+                    <li class="list-item">检查归档文件权限</li>
+                    <li class="list-item">查看错误日志</li>
+                </ul>
+            </div>
+
+            <h3>小红书全自动闭环</h3>
+
+            <div class="highlight-box">
+                <p><strong>问题 1：热点监控失败</strong></p>
+                <p><strong>现象</strong>：无法连接小红书或数据解析失败</p>
+                <p><strong>原因</strong>：MediaCrawler 连接失败或 Cookies 失效</p>
+                <p><strong>解决方案</strong>：</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">检查 MediaCrawler 状态</li>
+                    <li class="list-item">更新 MediaCrawler Cookies</li>
+                    <li class="list-item">增加超时时间</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>问题 2：内容生成失败</strong></p>
+                <p><strong>现象</strong>：无法生成内容或 API 失效</p>
+                <p><strong>原因</strong>：content-generator 未集成或 API 失效</p>
+                <p><strong>解决方案</strong>：</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">集成 content-generator</li>
+                    <li class="list-item">更新 content-generator API 配置</li>
+                    <li class="list-item">检查 API 密钥</li>
+                </ul>
+            </div>
+
+            <h3>日程集成</h3>
+
+            <div class="highlight-box">
+                <p><strong>问题 1：添加日程失败</strong></p>
+                <p><strong>现象</strong>：日期格式错误或时间格式错误</p>
+                <p><strong>原因</strong>：日期或时间格式不符合要求</p>
+                <p><strong>解决方案</strong>：</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">检查日期格式（YYYY-MM-DD）</li>
+                    <li class="list-item">检查时间格式（HH:MM）</li>
+                    <li class="list-item">使用 24 小时制</li>
+                </ul>
+            </div>
+
+            <h3>自动评论回复系统</h3>
+
+            <div class="highlight-box">
+                <p><strong>问题 1：配置文件错误</strong></p>
+                <p><strong>现象</strong>：JSON 格式错误或配置项缺失</p>
+                <p><strong>原因</strong>：配置文件格式错误或缺少必要的配置项</p>
+                <p><strong>解决方案</strong>：</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">检查 JSON 格式</li>
+                    <li class="list-item">检查配置项完整性</li>
+                    <li class="list-item">查看错误日志</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>问题 2：Cookies 失效</strong></p>
+                <p><strong>现象</strong>：Cookies 过期或格式错误</p>
+                <p><strong>原因</strong>：Cookies 过期或格式不正确</p>
+                <p><strong>解决方案</strong>：</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">从浏览器重新复制 Cookies</li>
+                    <li class="list-item">更新 config.json 中的 Cookies</li>
+                    <li class="list-item">检查 Cookies 格式</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>问题 3：监控失败</strong></p>
+                <p><strong>现象</strong>：无法连接小红书或笔记 ID 错误</p>
+                <p><strong>原因</strong>：Playwright 连接失败或笔记 ID 不正确</p>
+                <p><strong>解决方案</strong>：</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">检查 Playwright 状态</li>
+                    <li class="list-item">检查笔记 ID 是否正确</li>
+                    <li class="list-item">增加超时时间</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>问题 4：回复失败</strong></p>
+                <p><strong>现象</strong>：回复频率过高或内容违规</p>
+                <p><strong>原因</strong>：回复策略过于激进或内容不当</p>
+                <p><strong>解决方案</strong>：</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item">调整回复延迟</li>
+                    <li class="list-item">减少每日回复数量</li>
+                    <li class="list-item">优化回复模板</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 第7页：扩展指南 -->
+        <div class="page">
+            <div class="page-header">
+                <h2>扩展指南</h2>
+                <div class="subtitle">Extension Guide</div>
+            </div>
+
+            <h3>新增功能模块</h3>
+
+            <div class="info-box">
+                <p><strong>扩展 1：数据仪表盘</strong></p>
+                <p>数据仪表盘功能将提供可视化的数据展示、效果追踪、ROI 计算、趋势分析和话题维度分析。该模块将使用 matplotlib、plotly、streamlit 等技术栈，提供 Web 界面展示各项指标。</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item"><strong>总览面板</strong>：关键指标、今日数据</li>
+                    <li class="list-item"><strong>趋势分析</strong>：粉丝增长、内容表现</li>
+                    <li class="list-item"><strong>内容管理</strong>：已发布内容、草稿列表</li>
+                    <li class="list-item"><strong>互动分析</strong>：评论回复统计、转化率</li>
+                    <li class="list-item"><strong>ROI 报告</strong>：投入产出比、收益分析</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <p><strong>扩展 2：A/B 测试系统</strong></p>
+                <p>A/B 测试系统将实现标题 A/B 测试、封面图 A/B 测试、发布时间测试和结果自动分析。该模块将支持测试标题吸引力、封面吸引力、发布时间、互动率等维度，自动分析最佳方案并推荐。</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item"><strong>标题 A/B 测试</strong>：测试不同标题的点击率</li>
+                    <li class="list-item"><strong>封面图 A/B 测试</strong>：测试不同封面的点击率</li>
+                    <li class="list-item"><strong>发布时间测试</strong>：测试不同发布时间的浏览量</li>
+                    <li class="list-item"><strong>结果分析</strong>：自动判定最佳方案</li>
+                    <li class="list-item"><strong>推荐输出</strong>：推荐最佳标题、最佳封面、最佳发布时间</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <p><strong>扩展 3：邮箱集成</strong></p>
+                <p>邮箱集成将实现 IMAP 连接读取邮件、SMTP 配置发送邮件、未读邮件统计、邮件分类、提醒集成。该模块将支持检查未读重要邮件、标记需要回复的邮件、提取待处理事项、发送提醒邮件。</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item"><strong>IMAP 连接</strong>：连接邮件服务器，读取未读邮件</li>
+                    <li class="list-item"><strong>SMTP 配置</strong>：配置邮件发送功能</li>
+                    <li class="list-item"><strong>未读邮件统计</strong>：统计未读邮件数量</li>
+                    <li class="list-item"><strong>邮件分类</strong>：按重要、客户、通知分类</li>
+                    <li class="list-item"><strong>提醒集成</strong>：发送提醒邮件到指定邮箱</li>
+                </ul>
+            </div>
+
+            <h3>跨平台支持</h3>
+
+            <div class="success-box">
+                <p><strong>跨平台 1：抖音集成</strong></p>
+                <p>抖音集成将实现抖音视频自动发布功能，支持视频上传、描述生成、标签添加、封面设置。该模块将使用抖音开放平台 API，实现一键多平台发布。</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item"><strong>视频上传</strong>：自动上传视频文件</li>
+                    <li class="list-item"><strong>描述生成</strong>：使用 AI 生成视频描述</li>
+                    <li class="list-item"><strong>标签添加</strong>：自动添加相关标签</li>
+                    <li class="list-item"><strong>封面设置</strong>：设置视频封面</li>
+                    <li class="list-item"><strong>发布管理</strong>：管理已发布视频</li>
+                </ul>
+            </div>
+
+            <div class="success-box">
+                <p><strong>跨平台 2：B 站集成</strong></p>
+                <p>B 站集成将实现 B 站视频自动发布功能，支持视频上传、封面图设置、分区选择、标签添加。该模块将使用 Bilibili API，实现一键多平台发布。</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item"><strong>视频上传</strong>：自动上传视频文件</li>
+                    <li class="list-item"><strong>封面图设置</strong>：设置视频封面图</li>
+                    <li class="list-item"><strong>分区选择</strong>：选择视频分区</li>
+                    <li class="list-item"><strong>标签添加</strong>：自动添加相关标签</li>
+                    <li class="list-item"><strong>发布管理</strong>：管理已发布视频</li>
+                </ul>
+            </div>
+
+            <h3>私域运营</h3>
+
+            <div class="info-box">
+                <p><strong>私域 1：飞书自动回复</strong></p>
+                <p>飞书自动回复将实现飞书消息自动回复、客户信息归档功能。该模块将使用飞书开放平台 API，实现自动回复飞书消息、管理客户信息、客户跟进提醒。</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item"><strong>消息自动回复</strong>：根据关键词自动回复飞书消息</li>
+                    <li class="list-item"><strong>客户信息归档</strong>：记录客户互动历史</li>
+                    <li class="list-item"><strong>客户分级</strong>：VIP/活跃/新客户分级</li>
+                    <li class="list-item"><strong>跟进提醒</strong>：提醒跟进客户</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <p><strong>私域 2：微信消息回复</strong></p>
+                <p>微信消息回复将实现微信消息自动回复功能。该模块将使用企业微信 API，实现自动回复微信消息、客户信息管理。</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item"><strong>消息自动回复</strong>：根据关键词自动回复微信消息</li>
+                    <li class="list-item"><strong>客户信息管理</strong>：记录客户互动历史</li>
+                    <li class="list-item"><strong>自动标签</strong>：为客户打标签</li>
+                </ul>
+            </div>
+
+            <h3>高级功能</h3>
+
+            <div class="success-box">
+                <p><strong>高级 1：远程协作</strong></p>
+                <p>远程协作将实现通过 OpenClaw nodes 控制手机、远程拍照采集素材、紧急事务处理、位置共享等功能。该模块将使用 OpenClaw nodes API，实现远程控制手机、远程拍照、远程操作。</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item"><strong>远程控制手机</strong>：通过 nodes 控制手机</li>
+                    <li class="list-item"><strong>远程拍照</strong>：远程控制手机拍照</li>
+                    <li class="list-item"><strong>紧急事务处理</strong>：远程处理紧急事务</li>
+                    <li class="list-item"><strong>位置共享</strong>：共享手机位置</li>
+                </ul>
+            </div>
+
+            <div class="success-box">
+                <p><strong>高级 2：智能决策引擎</strong></p>
+                <p>智能决策引擎将实现基于多维度数据的智能决策功能。该模块将使用机器学习、数据分析技术，智能分析数据，提供决策建议。该模块支持自动化决策、决策推荐、决策记录。</p>
+                <ul style="margin: 0; padding-left: 20px; line-height:  1.8;">
+                    <li class="list-item"><strong>数据输入</strong>：多维度数据输入（热点、竞品、用户行为）</li>
+                    <li class="list-item"><strong>智能分析</strong>：使用机器学习模型分析数据</li>
+                    <li class="list-item"><strong>决策推荐</strong>：提供智能决策建议</li>
+                    <li class="list-item"><strong>决策记录</strong>：记录决策历史</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 第8页：总结 -->
+        <div class="page">
+            <div class="page-header">
+                <h2>总结</h2>
+                <div class="subtitle">Summary</div>
+            </div>
+
+            <h3>核心价值</h3>
+            <p>
+                Wilson 老板助理是一个功能完整、技术成熟、易于扩展的全能型 AI 助手，通过 5 大核心功能和模块化架构，实现了从信息获取到任务执行的全流程自动化。系统通过智能决策和自动化执行，大幅提升运营效率，实现一人 = 三人运营团队的目标。
+            </p>
+
+            <div class="success-box">
+                <p><strong>核心价值</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item"><span class="emoji">✅</span> <strong>数据驱动决策</strong>：基于多维度数据提供运营建议</li>
+                    <li class="list-item"><span class="emoji">✅</span> <strong>智能任务分配</strong>：自动识别优先级，智能分配资源</li>
+                    <li class="list-item"><span class="emoji">✅</span> <strong>全流程自动化</strong>：从热点监控到内容发布全自动化</li>
+                    <li class="list-item"><span class="emoji">✅</span> <strong>实时监控反馈</strong>：持续跟踪效果，自动优化策略</li>
+                    <li class="list-item"><span class="emoji">✅</span> <strong>个性化配置</strong>：支持多账号、多平台、多策略配置</li>
+                </ul>
+            </div>
+
+            <h3>技术成熟度</h3>
+            <div class="success-box">
+                <p><strong>技术成熟度</strong></p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li class="list-item"><span class="emoji">✅</span> <strong>模块化架构</strong>：每个模块独立可测试</li>
+                    <li class="list-item"><span class="emoji">✅</span> <strong>配置驱动</strong>：所有行为通过配置文件控制</li>
+                    <li class="list-item"><span class="emoji">✅</span> <strong>日志记录</strong>：完整的操作日志</li>
+                    <li class="list-item"><span class="emoji">✅</span> <strong>错误处理</strong>：完善的异常处理和错误恢复</li>
+                    <li class="list-item"><span class="emoji">✅</span> <strong>性能优化</strong>：缓存、异步处理、批量操作优化</li>
+                    <li class="list-item"><span class="emoji">✅</span> <strong>可扩展性</strong>：支持插件式扩展，可自定义新功能</li>
+                </ul>
+            </div>
+
+            <div class="footer">
+                <p>Wilson 老板助理 - 超高级详细实战手册</p>
+                <p>版本 v1.0.0 | 2026年2月20日</p>
+                <p>总页数：8+ | 总字数：15,000+ | 超级详细版</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="wolfGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="400" rx="20" fill="url(#bgGradient)"/>
+  
+  <!-- Wolf Head Silhouette -->
+  <g transform="translate(100, 80) scale(0.8)">
+    <!-- Main face -->
+    <ellipse cx="125" cy="150" rx="100" ry="90" fill="url(#wolfGradient)" opacity="0.9"/>
+    
+    <!-- Left ear -->
+    <path d="M 50 80 L 30 20 L 80 60 Z" fill="url(#wolfGradient)" opacity="0.85"/>
+    <path d="M 50 80 L 65 50 L 80 60 Z" fill="#764ba2" opacity="0.5"/>
+    
+    <!-- Right ear -->
+    <path d="M 200 80 L 220 20 L 170 60 Z" fill="url(#wolfGradient)" opacity="0.85"/>
+    <path d="M 200 80 L 185 50 L 170 60 Z" fill="#764ba2" opacity="0.5"/>
+    
+    <!-- Eyes -->
+    <ellipse cx="85" cy="130" rx="15" ry="18" fill="#1a1a2e"/>
+    <ellipse cx="165" cy="130" rx="15" ry="18" fill="#1a1a2e"/>
+    <ellipse cx="88" cy="125" rx="5" ry="6" fill="#00d4ff"/>
+    <ellipse cx="168" cy="125" rx="5" ry="6" fill="#00d4ff"/>
+    
+    <!-- Snout -->
+    <ellipse cx="125" cy="175" rx="45" ry="35" fill="url(#wolfGradient)" opacity="0.8"/>
+    
+    <!-- Nose -->
+    <ellipse cx="125" cy="165" rx="12" ry="8" fill="#1a1a2e"/>
+    
+    <!-- Mouth -->
+    <path d="M 110 185 Q 125 195 140 185" stroke="#1a1a2e" stroke-width="3" fill="none"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="200" y="350" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    Wilson
+  </text>
+  <text x="200" y="380" font-family="Arial, sans-serif" font-size="20" fill="#e0e0e0" text-anchor="middle">
+    AI 助手 🐺
+  </text>
+</svg>

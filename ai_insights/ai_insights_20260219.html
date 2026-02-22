@@ -1,0 +1,672 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>AI前沿信息周报 - 2026年02月19日</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 11px;
+            line-height: 1.4;
+            color: #2C3E50;
+            background: white;
+        }
+
+        .container {
+            width: 794px;
+            margin: 0 auto;
+            background: white;
+        }
+
+        /* 封面 - 完整A4 */
+        .cover {
+            width: 794px;
+            height: 1123px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1600&h=900&fit=crop') center/cover;
+            position: relative;
+            color: white;
+            page-break-after: always;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+        }
+
+        .cover > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 52px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: 4px;
+        }
+
+        .cover .subtitle {
+            font-size: 22px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            opacity: 0.95;
+        }
+
+        .cover .info {
+            font-size: 14px;
+            opacity: 0.9;
+            text-align: center;
+        }
+
+        .cover .divider {
+            width: 80px;
+            height: 2px;
+            background: rgba(255,255,255,0.6);
+            margin: 25px auto;
+        }
+
+        /* 内容页通用 */
+        .page {
+            width: 794px;
+            min-height: 1123px;
+            padding: 30px 40px;
+            position: relative;
+            background: white;
+            page-break-after: always;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 20px;
+            margin: -30px -40px 20px -40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=400&fit=crop') center/cover;
+            opacity: 0.12;
+        }
+
+        .page-header h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 28px;
+            color: white;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 5px;
+        }
+
+        .page-header .meta {
+            font-size: 12px;
+            color: rgba(255,255,255,0.85);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 论文列表 */
+        .paper-item {
+            background: #f8f9fa;
+            border-left: 3px solid #667eea;
+            padding: 12px 15px;
+            margin-bottom: 12px;
+            page-break-inside: avoid;
+        }
+
+        .paper-title {
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+
+        .paper-meta {
+            font-size: 10px;
+            color: #7f8c8d;
+            margin-bottom: 6px;
+        }
+
+        .paper-summary {
+            color: #5a6c7d;
+            line-height: 1.4;
+        }
+
+        .category-tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 9px;
+            margin-right: 5px;
+        }
+
+        /* HN讨论 */
+        .hn-item {
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+            page-break-inside: avoid;
+        }
+
+        .hn-title {
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 4px;
+        }
+
+        .hn-meta {
+            font-size: 10px;
+            color: #7f8c8d;
+        }
+
+        .hn-score {
+            color: #ff6600;
+            font-weight: 600;
+        }
+
+        /* GitHub项目 */
+        .github-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .github-card {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 12px;
+            page-break-inside: avoid;
+        }
+
+        .repo-name {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 4px;
+        }
+
+        .repo-desc {
+            color: #5a6c7d;
+            line-height: 1.4;
+            margin-bottom: 6px;
+            font-size: 10px;
+        }
+
+        .repo-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 10px;
+            color: #7f8c8d;
+        }
+
+        .repo-tags span {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 1px 6px;
+            border-radius: 4px;
+            margin-right: 3px;
+            font-size: 9px;
+        }
+
+        /* 统计卡片 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+
+        /* 装饰图片 */
+        .decor-image {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 200px;
+            height: 150px;
+            opacity: 0.3;
+            background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=300&fit=crop') center/cover;
+            border-radius: 8px;
+            z-index: 0;
+        }
+
+        /* 打印优化 */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .page {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 封面 -->
+        <div class="cover">
+            <h1>AI前沿信息</h1>
+            <div class="divider"></div>
+            <div class="subtitle">第 8 周周报</div>
+            <div class="info">
+                <p>2026年02月19日</p>
+                <p style="margin-top: 10px;">涵盖论文 · 技术 · 社区 · 项目</p>
+            </div>
+        </div>
+
+        <!-- 统计概览 -->
+        <div class="page">
+            <div class="decor-image"></div>
+            <div class="page-header">
+                <h2>本周概览</h2>
+                <div class="meta">Overview | Week 8</div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">arXiv 论文</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">HN 热门讨论</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">热门项目</div>
+                </div>
+            </div>
+
+            <h3 style="margin: 20px 0 10px 0; color: #667eea;">📚 本周热点领域</h3>
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 6px;">
+                <p style="color: #5a6c7d; line-height: 1.6;">
+                    本周 AI 领域持续火热，大语言模型应用、多智能体系统、视觉生成技术仍是核心关注点。
+                    社区讨论集中在模型推理效率优化、实际应用场景落地、以及开源工具的生态建设。
+                </p>
+            </div>
+        </div>
+
+        <!-- 论文部分 -->
+        <div class="page">
+            <div class="page-header">
+                <h2>arXiv 热门论文</h2>
+                <div class="meta">Latest Research from arXiv</div>
+            </div>
+
+            
+            <div class="paper-item">
+                <div class="paper-title">Policy Compiler for Secure Agentic Systems</div>
+                <div class="paper-meta">
+                    <span class="category-tag">cs.AI</span>
+                    <span>Nils Palumbo, Sarthak Choudhary, Jihye Choi, Prasad Chalasani, 等</span>
+                </div>
+                <div class="paper-summary">LLM-based agents are increasingly being deployed in contexts requiring complex authorization policies: customer service protocols, approval workflows, data access restrictions, and regulatory compliance. Embedding these policies in prompts provides no enforcement guarantees. We present PCAS, a Policy Compiler for Agentic Systems that provides deterministic policy enforcement. Enforcing such policies requires tracking information flow across agents, which linear message histories cannot capture. ...</div>
+            </div>
+            
+            <div class="paper-item">
+                <div class="paper-title">Measuring Mid-2025 LLM-Assistance on Novice Performance in Biology</div>
+                <div class="paper-meta">
+                    <span class="category-tag">cs.AI</span>
+                    <span>Shen Zhou Hong, Alex Kleinman, Alyssa Mathiowetz, Adam Howes, 等</span>
+                </div>
+                <div class="paper-summary">Large language models (LLMs) perform strongly on biological benchmarks, raising concerns that they may help novice actors acquire dual-use laboratory skills. Yet, whether this translates to improved human performance in the physical laboratory remains unclear. To address this, we conducted a pre-registered, investigator-blinded, randomized controlled trial (June-August 2025; n = 153) evaluating whether LLMs improve novice performance in tasks that collectively model a viral reverse genetics work...</div>
+            </div>
+            
+            <div class="paper-item">
+                <div class="paper-title">Calibrate-Then-Act: Cost-Aware Exploration in LLM Agents</div>
+                <div class="paper-meta">
+                    <span class="category-tag">cs.AI</span>
+                    <span>Wenxuan Ding, Nicholas Tomlin, Greg Durrett</span>
+                </div>
+                <div class="paper-summary">LLMs are increasingly being used for complex problems which are not necessarily resolved in a single response, but require interacting with an environment to acquire information. In these scenarios, LLMs must reason about inherent cost-uncertainty tradeoffs in when to stop exploring and commit to an answer. For instance, on a programming task, an LLM should test a generated code snippet if it is uncertain about the correctness of that code; the cost of writing a test is nonzero, but typically lo...</div>
+            </div>
+            
+            <div class="paper-item">
+                <div class="paper-title">Knowledge-Embedded Latent Projection for Robust Representation Learning</div>
+                <div class="paper-meta">
+                    <span class="category-tag">cs.LG</span>
+                    <span>Weijing Tang, Ming Yuan, Zongqi Xia, Tianxi Cai</span>
+                </div>
+                <div class="paper-summary">Latent space models are widely used for analyzing high-dimensional discrete data matrices, such as patient-feature matrices in electronic health records (EHRs), by capturing complex dependence structures through low-dimensional embeddings. However, estimation becomes challenging in the imbalanced regime, where one matrix dimension is much larger than the other. In EHR applications, cohort sizes are often limited by disease prevalence or data availability, whereas the feature space remains extrem...</div>
+            </div>
+            
+            <div class="paper-item">
+                <div class="paper-title">Causality is Key for Interpretability Claims to Generalise</div>
+                <div class="paper-meta">
+                    <span class="category-tag">cs.LG</span>
+                    <span>Shruti Joshi, Aaron Mueller, David Klindt, Wieland Brendel, 等</span>
+                </div>
+                <div class="paper-summary">Interpretability research on large language models (LLMs) has yielded important insights into model behaviour, yet recurring pitfalls persist: findings that do not generalise, and causal interpretations that outrun the evidence. Our position is that causal inference specifies what constitutes a valid mapping from model activations to invariant high-level structures, the data or assumptions needed to achieve it, and the inferences it can support. Specifically, Pearl's causal hierarchy clarifies w...</div>
+            </div>
+            
+            <div class="paper-item">
+                <div class="paper-title">Protecting the Undeleted in Machine Unlearning</div>
+                <div class="paper-meta">
+                    <span class="category-tag">cs.LG</span>
+                    <span>Aloni Cohen, Refael Kohen, Kobbi Nissim, Uri Stemmer</span>
+                </div>
+                <div class="paper-summary">Machine unlearning aims to remove specific data points from a trained model, often striving to emulate "perfect retraining", i.e., producing the model that would have been obtained had the deleted data never been included. We demonstrate that this approach, and security definitions that enable it, carry significant privacy risks for the remaining (undeleted) data points. We present a reconstruction attack showing that for certain tasks, which can be computed securely without deletions, a mechani...</div>
+            </div>
+            
+            <div class="paper-item">
+                <div class="paper-title">Reinforced Fast Weights with Next-Sequence Prediction</div>
+                <div class="paper-meta">
+                    <span class="category-tag">cs.CL</span>
+                    <span>Hee Seung Hwang, Xindi Wu, Sanghyuk Chun, Olga Russakovsky</span>
+                </div>
+                <div class="paper-summary">Fast weight architectures offer a promising alternative to attention-based transformers for long-context modeling by maintaining constant memory overhead regardless of context length. However, their potential is limited by the next-token prediction (NTP) training paradigm. NTP optimizes single-token predictions and ignores semantic coherence across multiple tokens following a prefix. Consequently, fast weight models, which dynamically update their parameters to store contextual information, lear...</div>
+            </div>
+            
+            <div class="paper-item">
+                <div class="paper-title">Calibrate-Then-Act: Cost-Aware Exploration in LLM Agents</div>
+                <div class="paper-meta">
+                    <span class="category-tag">cs.CL</span>
+                    <span>Wenxuan Ding, Nicholas Tomlin, Greg Durrett</span>
+                </div>
+                <div class="paper-summary">LLMs are increasingly being used for complex problems which are not necessarily resolved in a single response, but require interacting with an environment to acquire information. In these scenarios, LLMs must reason about inherent cost-uncertainty tradeoffs in when to stop exploring and commit to an answer. For instance, on a programming task, an LLM should test a generated code snippet if it is uncertain about the correctness of that code; the cost of writing a test is nonzero, but typically lo...</div>
+            </div>
+            
+        </div>
+
+        
+        <!-- 论文续页 -->
+        <div class="page">
+            <div class="page-header">
+                <h2>arXiv 热门论文 (续)</h2>
+                <div class="meta">More Papers</div>
+            </div>
+
+            
+            <div class="paper-item">
+                <div class="paper-title">Scaling Open Discrete Audio Foundation Models with Interleaved Semantic, Acoustic, and Text Tokens</div>
+                <div class="paper-meta">
+                    <span class="category-tag">cs.CL</span>
+                    <span>Potsawee Manakul, Woody Haosheng Gan, Martijn Bartelds, Guangzhi Sun, 等</span>
+                </div>
+                <div class="paper-summary">Current audio language models are predominantly text-first, either extending pre-trained text LLM backbones or relying on semantic-only audio tokens, limiting general audio modeling. This paper presents a systematic empirical study of native audio foundation models that apply next-token prediction to audio at scale, jointly modeling semantic content, acoustic details, and text to support both general audio generation and cross-modal capabilities. We provide comprehensive empirical insights for b...</div>
+            </div>
+            
+            <div class="paper-item">
+                <div class="paper-title">TeCoNeRV: Leveraging Temporal Coherence for Compressible Neural Representations for Videos</div>
+                <div class="paper-meta">
+                    <span class="category-tag">cs.CV</span>
+                    <span>Namitha Padmanabhan, Matthew Gwilliam, Abhinav Shrivastava</span>
+                </div>
+                <div class="paper-summary">Implicit Neural Representations (INRs) have recently demonstrated impressive performance for video compression. However, since a separate INR must be overfit for each video, scaling to high-resolution videos while maintaining encoding efficiency remains a significant challenge. Hypernetwork-based approaches predict INR weights (hyponetworks) for unseen videos at high speeds, but with low quality, large compressed size, and prohibitive memory needs at higher resolutions. We address these fundamen...</div>
+            </div>
+            
+            <div class="paper-item">
+                <div class="paper-title">Learning Humanoid End-Effector Control for Open-Vocabulary Visual Loco-Manipulation</div>
+                <div class="paper-meta">
+                    <span class="category-tag">cs.CV</span>
+                    <span>Runpei Dong, Ziyan Li, Xialin He, Saurabh Gupta</span>
+                </div>
+                <div class="paper-summary">Visual loco-manipulation of arbitrary objects in the wild with humanoid robots requires accurate end-effector (EE) control and a generalizable understanding of the scene via visual inputs (e.g., RGB-D images). Existing approaches are based on real-world imitation learning and exhibit limited generalization due to the difficulty in collecting large-scale training datasets. This paper presents a new paradigm, HERO, for object loco-manipulation with humanoid robots that combines the strong generali...</div>
+            </div>
+            
+            <div class="paper-item">
+                <div class="paper-title">Saliency-Aware Multi-Route Thinking: Revisiting Vision-Language Reasoning</div>
+                <div class="paper-meta">
+                    <span class="category-tag">cs.CV</span>
+                    <span>Mingjia Shi, Yinhan He, Yaochen Zhu, Jundong Li</span>
+                </div>
+                <div class="paper-summary">Vision-language models (VLMs) aim to reason by jointly leveraging visual and textual modalities. While allocating additional inference-time computation has proven effective for large language models (LLMs), achieving similar scaling in VLMs remains challenging. A key obstacle is that visual inputs are typically provided only once at the start of generation, while textual reasoning (e.g., early visual summaries) is generated autoregressively, causing reasoning to become increasingly text-dominate...</div>
+            </div>
+            
+            <div class="paper-item">
+                <div class="paper-title">End-user validation of BRIGHT with custom-developed graphical user interface applied to cervical cancer brachytherapy</div>
+                <div class="paper-meta">
+                    <span class="category-tag">cs.NE</span>
+                    <span>Leah R. M. Dickhoff, Ellen M. Kerkhof, Heloisa H. Deuzeman, Laura A. Velema, 等</span>
+                </div>
+                <div class="paper-summary">Multi-objective optimisation using BRIGHT has proven insightful and effective in prostate cancer brachytherapy treatment planning. BRachytherapy via artificially Intelligent GOMEA-Heuristic based Treatment planning (BRIGHT) generates multiple treatment plans, each with a different trade-off between tumour coverage and organs-at-risk sparing. BRIGHT was recently extended to cervical cancer brachytherapy. In this study, we present a novel, custom-developed graphical user interface (GUI) that enabl...</div>
+            </div>
+            
+            <div class="paper-item">
+                <div class="paper-title">Evolutionary Context Search for Automated Skill Acquisition</div>
+                <div class="paper-meta">
+                    <span class="category-tag">cs.NE</span>
+                    <span>Qi Sun, Stefan Nielsen, Rio Yokota, Yujin Tang</span>
+                </div>
+                <div class="paper-summary">Large Language Models cannot reliably acquire new knowledge post-deployment -- even when relevant text resources exist, models fail to transform them into actionable knowledge without retraining. Retrieval-Augmented Generation attempts to bridge this gap by surfacing relevant documents at inference time, yet similarity-based retrieval often fails to identify context that actually improves task performance. We introduce Evolutionary Context Search (ECS), an evolutionary method that searches conte...</div>
+            </div>
+            
+            <div class="paper-item">
+                <div class="paper-title">Heuristic Search as Language-Guided Program Optimization</div>
+                <div class="paper-meta">
+                    <span class="category-tag">cs.NE</span>
+                    <span>Mingxin Yu, Ruixiao Yang, Chuchu Fan</span>
+                </div>
+                <div class="paper-summary">Large Language Models (LLMs) have advanced Automated Heuristic Design (AHD) in combinatorial optimization (CO) in the past few years. However, existing discovery pipelines often require extensive manual trial-and-error or reliance on domain expertise to adapt to new or complex problems. This stems from tightly coupled internal mechanisms that limit systematic improvement of the LLM-driven design process. To address this challenge, we propose a structured framework for LLM-driven AHD that explici...</div>
+            </div>
+            
+        </div>
+        
+
+        <!-- HN讨论 -->
+        <div class="page">
+            <div class="page-header">
+                <h2>Hacker News 热门讨论</h2>
+                <div class="meta">Community Insights</div>
+            </div>
+
+            
+            <div class="hn-item">
+                <div class="hn-title">Show HN: Kore – local AI memory layer with Ebbinghaus forgetting curve</div>
+                <div class="hn-meta">
+                    <span class="hn-score">▲ 1</span>
+                    <span style="margin: 0 10px;">💬 0</span>
+                    <span>2026-02-19</span>
+                </div>
+            </div>
+            
+            <div class="hn-item">
+                <div class="hn-title">Show HN: Social Cookie Jar – Social media automation for AI agents</div>
+                <div class="hn-meta">
+                    <span class="hn-score">▲ 1</span>
+                    <span style="margin: 0 10px;">💬 0</span>
+                    <span>2026-02-19</span>
+                </div>
+            </div>
+            
+            <div class="hn-item">
+                <div class="hn-title">Phill CLI matches GPT-5.3-Codex on EVMbench audits (71% recall, 100% precision)</div>
+                <div class="hn-meta">
+                    <span class="hn-score">▲ 1</span>
+                    <span style="margin: 0 10px;">💬 1</span>
+                    <span>2026-02-19</span>
+                </div>
+            </div>
+            
+            <div class="hn-item">
+                <div class="hn-title">Show HN: Onairos SDK– Unified Context API, unlocking cross platform user history</div>
+                <div class="hn-meta">
+                    <span class="hn-score">▲ 1</span>
+                    <span style="margin: 0 10px;">💬 0</span>
+                    <span>2026-02-19</span>
+                </div>
+            </div>
+            
+            <div class="hn-item">
+                <div class="hn-title">Have we entered a new age of AI-enabled scientific discovery?</div>
+                <div class="hn-meta">
+                    <span class="hn-score">▲ 1</span>
+                    <span style="margin: 0 10px;">💬 0</span>
+                    <span>2026-02-19</span>
+                </div>
+            </div>
+            
+            <div class="hn-item">
+                <div class="hn-title">Show HN: EasyCheck – lightweight compliance automation for small teams</div>
+                <div class="hn-meta">
+                    <span class="hn-score">▲ 1</span>
+                    <span style="margin: 0 10px;">💬 0</span>
+                    <span>2026-02-19</span>
+                </div>
+            </div>
+            
+            <div class="hn-item">
+                <div class="hn-title">Does open source have an AI slop problem? [video]</div>
+                <div class="hn-meta">
+                    <span class="hn-score">▲ 3</span>
+                    <span style="margin: 0 10px;">💬 0</span>
+                    <span>2026-02-19</span>
+                </div>
+            </div>
+            
+            <div class="hn-item">
+                <div class="hn-title">Show HN: Potatometer – Check how visible your website is to AI search (GEO)</div>
+                <div class="hn-meta">
+                    <span class="hn-score">▲ 3</span>
+                    <span style="margin: 0 10px;">💬 3</span>
+                    <span>2026-02-19</span>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- GitHub项目 -->
+        <div class="page">
+            <div class="page-header">
+                <h2>GitHub 热门AI项目</h2>
+                <div class="meta">Trending Projects</div>
+            </div>
+
+            <div class="github-grid">
+                
+                <div class="github-card">
+                    <div class="repo-name">autogen</div>
+                    <div class="repo-desc">Enable next-gen LLM applications. Converse, collaborate, and code with agents.</div>
+                    <div class="repo-meta">
+                        <div class="repo-tags">
+                            
+                            <span>多智能体</span>
+                            
+                            <span>LLM</span>
+                            
+                            <span>框架</span>
+                            
+                        </div>
+                        <div>⭐ 28000</div>
+                    </div>
+                </div>
+                
+                <div class="github-card">
+                    <div class="repo-name">langchain</div>
+                    <div class="repo-desc">Building applications with LLMs through composability</div>
+                    <div class="repo-meta">
+                        <div class="repo-tags">
+                            
+                            <span>LLM</span>
+                            
+                            <span>RAG</span>
+                            
+                            <span>框架</span>
+                            
+                        </div>
+                        <div>⭐ 76000</div>
+                    </div>
+                </div>
+                
+                <div class="github-card">
+                    <div class="repo-name">vllm</div>
+                    <div class="repo-desc">A high-throughput and memory-efficient inference and serving engine for LLMs</div>
+                    <div class="repo-meta">
+                        <div class="repo-tags">
+                            
+                            <span>推理加速</span>
+                            
+                            <span>LLM</span>
+                            
+                            <span>部署</span>
+                            
+                        </div>
+                        <div>⭐ 21000</div>
+                    </div>
+                </div>
+                
+                <div class="github-card">
+                    <div class="repo-name">open-interpreter</div>
+                    <div class="repo-desc">Open Interpreter lets LLMs run code (Python, JS, Shell, etc.) on your computer</div>
+                    <div class="repo-meta">
+                        <div class="repo-tags">
+                            
+                            <span>代码执行</span>
+                            
+                            <span>AI助手</span>
+                            
+                            <span>工具</span>
+                            
+                        </div>
+                        <div>⭐ 46000</div>
+                    </div>
+                </div>
+                
+                <div class="github-card">
+                    <div class="repo-name">ComfyUI</div>
+                    <div class="repo-desc">A powerful and modular stable diffusion GUI</div>
+                    <div class="repo-meta">
+                        <div class="repo-tags">
+                            
+                            <span>图像生成</span>
+                            
+                            <span>GUI</span>
+                            
+                            <span>扩散模型</span>
+                            
+                        </div>
+                        <div>⭐ 39000</div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

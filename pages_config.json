@@ -1,0 +1,4 @@
+{
+  "title": "OpenClaw 子代理系统",
+  "body": "## OpenClaw 子代理系统\n\n本仓库包含两个专业子代理的完整文档和使用说明。\n\n## 子代理\n\n### XHS Operator（小红书自媒体运营）\n专业的小红书运营专家，包含 13 个可用工具。\n\n### Boss Assistant（老板办公助手）\n专业的行政助理，包含 20 个可用工具。\n\n## 文档\n\n- [agents-index.md](agents-index.md) - 子代理索引（完整工具清单）\n- [xhs-operator-agent.md](xhs-operator-agent.md) - XHS Operator 完整文档\n- [boss-assistant-agent.md](boss-assistant-agent.md) - Boss Assistant 完整文档\n\n## 查看文档\n\n### GitHub Pages\n\n访问：https://vimalinx.github.io/openclaw-agents/\n\n### 查看源码\n\n访问：https://github.com/vimalinx/openclaw-agents\n\n---\n\n**创建日期**: 2026-02-22\n**版本**: v1.0.0"
+}

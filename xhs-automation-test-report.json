@@ -1,0 +1,53 @@
+{
+  "timestamp": "2026-02-20 22:55:00",
+  "results": [
+    {
+      "name": "MediaCrawler（热点监控）",
+      "installed": true,
+      "importable": true,
+      "status": "✅ 可用",
+      "notes": "需要 Chrome 远程调试（CDP）"
+    },
+    {
+      "name": "AI 内容生成",
+      "installed": true,
+      "importable": true,
+      "status": "✅ 可用",
+      "notes": "内置模板生成器，无需外部 API"
+    },
+    {
+      "name": "配图生成",
+      "installed": true,
+      "importable": true,
+      "status": "⚠️ 需要配置",
+      "notes": "使用火山引擎豆包绘图 API（非 Grsai），需要 API 密钥"
+    },
+    {
+      "name": "自动发布",
+      "installed": true,
+      "importable": true,
+      "status": "✅ 可用",
+      "notes": "需要 Chrome 远程调试（CDP）和小红书登录"
+    },
+    {
+      "name": "数据反馈",
+      "installed": true,
+      "importable": true,
+      "status": "⚠️ 未完全实现",
+      "notes": "主脚本中函数已定义但返回模拟数据，需集成 MediaCrawler 监控功能"
+    },
+    {
+      "name": "主脚本",
+      "installed": true,
+      "importable": true,
+      "status": "✅ 可用",
+      "notes": "可运行 test 模式"
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "available": 4,
+    "partial": 2,
+    "unavailable": 0
+  }
+}

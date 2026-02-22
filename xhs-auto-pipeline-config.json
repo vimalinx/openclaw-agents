@@ -1,0 +1,84 @@
+{
+  "platform": "xiaohongshu",
+  "account": "11549094412",
+  "login_time": "2026-02-20 23:57",
+  "login_method": "qrcode",
+  "account_status": "logged_in",
+  
+  "automation": {
+    "hotspot_monitoring": {
+      "enabled": true,
+      "keywords": ["AI工具", "效率神器", "副业搞钱", "小红书运营", "自媒体变现"],
+      "check_interval": 3600
+    },
+    
+    "content_generation": {
+      "enabled": true,
+      "provider": "internal",
+      "template_types": ["tutorial", "sharing", "recommendation"],
+      "title_limit": 20
+    },
+    
+    "image_generation": {
+      "enabled": true,
+      "provider": "volcengine",
+      "api_key": "VOLCENGINE_API_KEY",
+      "style": "xiaohongshu",
+      "count": 4
+    },
+    
+    "auto_publish": {
+      "enabled": true,
+      "max_posts_per_day": 10,
+      "publish_delay_min": 5,
+      "publish_delay_max": 10,
+      "preview_before_publish": true
+    },
+    
+    "data_feedback": {
+      "enabled": true,
+      "track_views": true,
+      "track_likes": true,
+      "track_collects": true,
+      "track_comments": true,
+      "record_to_file": true
+    }
+  },
+  
+  "chrome": {
+    "remote_debugging_port": 9222,
+    "headless": false,
+    "user_data_dir": "/tmp/chrome-debug"
+  },
+  
+  "content_generation": {
+    "topics": ["AI工具", "效率神器", "副业搞钱", "小红书运营"],
+    "tone": "friendly",
+    "emoji_enabled": true,
+    "hashtag_strategy": "mix"
+  },
+  
+  "best_practices": {
+    "post_time": "10:00",
+    "post_frequency": "daily",
+    "engagement_before_post": true,
+    "reply_to_comments_24h": true
+  },
+  
+  "risk_management": {
+    "max_replies_per_day": 50,
+    "reply_delay_min": 5,
+    "reply_delay_max": 15,
+    "anti_detection": true
+  },
+  
+  "monitoring": {
+    "heartbeat_interval": 21600,
+    "alert_on_failure": true,
+    "alert_on_low_performance": true,
+    "performance_threshold": {
+      "api_response_time": 2000,
+      "page_load_time": 30000
+    }
+  }
+}

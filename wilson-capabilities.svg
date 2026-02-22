@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0c29;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#302b63;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#24243e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" rx="15" fill="url(#bg2)"/>
+  
+  <!-- Title -->
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    Wilson 的能力
+  </text>
+  
+  <!-- Icons Grid -->
+  <g transform="translate(50, 100)">
+    <!-- Tech/Linux -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="150" height="100" rx="10" fill="#667eea" opacity="0.8"/>
+      <text x="75" y="55" font-family="Arial, sans-serif" font-size="48" text-anchor="middle">💻</text>
+      <text x="75" y="85" font-family="Arial, sans-serif" font-size="16" fill="#ffffff" text-anchor="middle">技术问题</text>
+    </g>
+    
+    <!-- Search -->
+    <g transform="translate(180, 0)">
+      <rect x="0" y="0" width="150" height="100" rx="10" fill="#f093fb" opacity="0.8"/>
+      <text x="75" y="55" font-family="Arial, sans-serif" font-size="48" text-anchor="middle">🔍</text>
+      <text x="75" y="85" font-family="Arial, sans-serif" font-size="16" fill="#ffffff" text-anchor="middle">信息检索</text>
+    </g>
+    
+    <!-- Files -->
+    <g transform="translate(360, 0)">
+      <rect x="0" y="0" width="150" height="100" rx="10" fill="#4facfe" opacity="0.8"/>
+      <text x="75" y="55" font-family="Arial, sans-serif" font-size="48" text-anchor="middle">📁</text>
+      <text x="75" y="85" font-family="Arial, sans-serif" font-size="16" fill="#ffffff" text-anchor="middle">文件操作</text>
+    </g>
+    
+    <!-- Automation -->
+    <g transform="translate(540, 0)">
+      <rect x="0" y="0" width="150" height="100" rx="10" fill="#43e97b" opacity="0.8"/>
+      <text x="75" y="55" font-family="Arial, sans-serif" font-size="48" text-anchor="middle">⚙️</text>
+      <text x="75" y="85" font-family="Arial, sans-serif" font-size="16" fill="#ffffff" text-anchor="middle">任务自动化</text>
+    </g>
+    
+    <!-- Browser -->
+    <g transform="translate(0, 130)">
+      <rect x="0" y="0" width="150" height="100" rx="10" fill="#fa709a" opacity="0.8"/>
+      <text x="75" y="55" font-family="Arial, sans-serif" font-size="48" text-anchor="middle">🌐</text>
+      <text x="75" y="85" font-family="Arial, sans-serif" font-size="16" fill="#ffffff" text-anchor="middle">网页自动化</text>
+    </g>
+    
+    <!-- Feishu -->
+    <g transform="translate(180, 130)">
+      <rect x="0" y="0" width="150" height="100" rx="10" fill="#fee140" opacity="0.8"/>
+      <text x="75" y="55" font-family="Arial, sans-serif" font-size="48" text-anchor="middle">📝</text>
+      <text x="75" y="85" font-family="Arial, sans-serif" font-size="16" fill="#333333" text-anchor="middle">Feishu 文档</text>
+    </g>
+    
+    <!-- Direct -->
+    <g transform="translate(360, 130)">
+      <rect x="0" y="0" width="150" height="100" rx="10" fill="#a8edea" opacity="0.8"/>
+      <text x="75" y="55" font-family="Arial, sans-serif" font-size="48" text-anchor="middle">⚡</text>
+      <text x="75" y="85" font-family="Arial, sans-serif" font-size="16" fill="#333333" text-anchor="middle">简洁高效</text>
+    </g>
+    
+    <!-- Witty -->
+    <g transform="translate(540, 130)">
+      <rect x="0" y="0" width="150" height="100" rx="10" fill="#ffecd2" opacity="0.8"/>
+      <text x="75" y="55" font-family="Arial, sans-serif" font-size="48" text-anchor="middle">😄</text>
+      <text x="75" y="85" font-family="Arial, sans-serif" font-size="16" fill="#333333" text-anchor="middle">诙谐风趣</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>旅行攻略精选 | Travel Guides Collection</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 11px;
+            line-height: 1.4;
+            color: #2C3E50;
+            background: white;
+        }
+
+        .container {
+            width: 794px;  /* A4宽度 @ 96 DPI */
+            margin: 0 auto;
+            background: white;
+        }
+
+        /* 封面 - 完整A4 */
+        .cover {
+            width: 794px;
+            height: 1123px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1600&h=900&fit=crop') center/cover;
+            position: relative;
+            color: white;
+            page-break-after: always;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+        }
+
+        .cover > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 52px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: 4px;
+        }
+
+        .cover .subtitle {
+            font-size: 22px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            opacity: 0.95;
+        }
+
+        .cover .info {
+            font-size: 14px;
+            opacity: 0.9;
+            text-align: center;
+        }
+
+        .cover .divider {
+            width: 80px;
+            height: 2px;
+            background: rgba(255,255,255,0.6);
+            margin: 25px auto;
+        }
+
+        /* 目录 - 完整A4 */
+        .toc {
+            width: 794px;
+            min-height: 1123px;
+            padding: 40px;
+            page-break-after: always;
+        }
+
+        .toc h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #667eea;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .toc-card {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: #F8F9FA;
+            border-radius: 8px;
+            border: 1px solid #E9ECEF;
+        }
+
+        .toc-card .info {
+            flex: 1;
+        }
+
+        .toc-card .title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .toc-card .meta {
+            font-size: 11px;
+            color: #7F8C8D;
+            line-height: 1.3;
+        }
+
+        /* 攻略页 - 完整A4 */
+        .guide-page {
+            width: 794px;
+            min-height: 1123px;
+            page-break-after: always;
+        }
+
+        .guide-header {
+            height: 135px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 18px 35px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .guide-header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.12;
+            z-index: 0;
+        }
+
+        .guide-info {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+
+        .guide-info .tag {
+            display: inline-block;
+            padding: 5px 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-size: 11px;
+            font-weight: 500;
+            border-radius: 15px;
+            margin-bottom: 8px;
+        }
+
+        .guide-info h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .guide-info .meta {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            font-size: 10px;
+            color: #7F8C8D;
+        }
+
+        .guide-info .meta span {
+            background: #F8F9FA;
+            padding: 3px 8px;
+            border-radius: 10px;
+        }
+
+        /* 两栏内容区 - 高度控制 */
+        .guide-content {
+            display: grid;
+            grid-template-columns: 1.35fr 0.65fr;
+            gap: 15px;
+            padding: 15px;
+            height: 790px;
+        }
+
+        .col {
+            background: #FDFDFD;
+            border-radius: 6px;
+            padding: 12px;
+            border: 1px solid #F0F0F0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .col-header {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 8px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #E8E8E8;
+            flex-shrink: 0;
+        }
+
+        .col-header h4 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #2C3E50;
+        }
+
+        /* 行程卡片 */
+        .day-card {
+            background: #F8F9FA;
+            border-radius: 5px;
+            padding: 7px;
+            margin-bottom: 5px;
+            flex-shrink: 0;
+        }
+
+        .day-card .title {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 3px;
+            font-size: 11px;
+        }
+
+        .day-card .detail {
+            font-size: 10px;
+            color: #34495E;
+            margin-bottom: 2px;
+        }
+
+        .day-card .tip {
+            font-size: 9px;
+            color: #7F8C8D;
+            font-style: italic;
+            line-height: 1.2;
+        }
+
+        /* 信息块 */
+        .info-block {
+            margin-bottom: 8px;
+            flex-shrink: 0;
+        }
+
+        .info-block h5 {
+            font-size: 11px;
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 4px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 2px 0;
+            border-bottom: 1px solid #F0F0F0;
+            font-size: 9px;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-item .name {
+            flex: 1;
+            color: #34495E;
+        }
+
+        .info-item .price {
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        /* 拍照机位 */
+        .photo-item {
+            background: #F0F7FF;
+            border-radius: 4px;
+            padding: 4px;
+            margin-bottom: 3px;
+        }
+
+        .photo-item .name {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 10px;
+        }
+
+        .photo-item .detail {
+            font-size: 8px;
+            color: #34495E;
+            margin-top: 1px;
+        }
+
+        /* 必备物品 */
+        .essentials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+        }
+
+        .essential-item {
+            background: #FFF3E0;
+            color: #E65100;
+            padding: 3px 5px;
+            border-radius: 3px;
+            font-size: 8px;
+            text-align: center;
+        }
+
+        /* 贴士框 */
+        .tip-box {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            border-left: 3px solid #FFA726;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 9px;
+            color: #6D4C41;
+            line-height: 1.3;
+            margin-top: 4px;
+        }
+
+        /* 左下角图片 */
+        .corner-images {
+            position: absolute;
+            bottom: 18px;
+            left: 18px;
+            display: flex;
+            gap: 8px;
+            z-index: 0;
+        }
+
+        .corner-images img {
+            width: 140px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            opacity: 0.25;
+        }
+
+        /* 打印优化 */
+        @media print {
+            @page {
+                margin: 0;
+                size: A4;
+            }
+
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 封面 -->
+        <div class="cover">
+            <h1>旅行攻略精选</h1>
+            <p class="subtitle">TRAVEL GUIDES COLLECTION</p>
+            <div class="info">
+                <div class="divider"></div>
+                <p>精选 5 篇深度旅行攻略</p>
+                <p>从国内到国际，从城市到自然</p>
+                <p>探索世界，发现美好</p>
+                <p style="margin-top: 20px;">生成时间：2026年02月19日</p>
+            </div>
+        </div>
+
+        <!-- 目录 -->
+        <div class="toc">
+            <h2>目录 CONTENTS</h2>
+            <div class="toc-grid">
+
+                <div class="toc-card">
+                    <div class="info">
+                        <div class="title">1. 云南7天6晚完美攻略｜大理丽江香格里拉</div>
+                        <div class="meta">📍 云南 · ⏱️ 7天</div>
+                        <div class="meta">💰 3000-5000元 · 📅 3-5月、9-11月</div>
+                    </div>
+                </div>
+
+                <div class="toc-card">
+                    <div class="info">
+                        <div class="title">2. 日本京都深度游｜千年古都的静美时光</div>
+                        <div class="meta">📍 日本京都 · ⏱️ 5天</div>
+                        <div class="meta">💰 8000-12000元 · 📅 3-4月樱花季、11月红叶季</div>
+                    </div>
+                </div>
+
+                <div class="toc-card">
+                    <div class="info">
+                        <div class="title">3. 新疆自驾30天｜穿越天山南北的壮美</div>
+                        <div class="meta">📍 新疆 · ⏱️ 30天</div>
+                        <div class="meta">💰 15000-20000元 · 📅 6-10月</div>
+                    </div>
+                </div>
+
+                <div class="toc-card">
+                    <div class="info">
+                        <div class="title">4. 四川成都深度游｜熊猫火锅慢生活</div>
+                        <div class="meta">📍 四川成都 · ⏱️ 4天</div>
+                        <div class="meta">💰 2000-3000元 · 📅 3-4月、9-10月</div>
+                    </div>
+                </div>
+
+                <div class="toc-card">
+                    <div class="info">
+                        <div class="title">5. 泰国清迈慢生活｜古城寺庙与夜市美食</div>
+                        <div class="meta">📍 泰国清迈 · ⏱️ 5天</div>
+                        <div class="meta">💰 3000-5000元 · 📅 11-2月（雨季后）</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 攻略 1 -->
+        <div class="guide-page">
+            <div class="guide-header">
+                <div class="guide-header-bg" style="background-image: url('https://images.unsplash.com/photo-1568571950750-087508822d56?w=1200&h=600&fit=crop')"></div>
+                <div class="guide-info">
+                    <span class="tag">云南</span>
+                    <h3>云南7天6晚完美攻略｜大理丽江香格里拉</h3>
+                    <div class="meta">
+                        <span>✍️ 旅行博主小A</span>
+                        <span>⏱️ 7天</span>
+                        <span>📅 3-5月、9-11月</span>
+                        <span>💰 3000-5000元</span>
+                        <span>🚗 飞机直达大理/丽江...</span>
+                        <span>🌍 GMT+8</span>
+                        <span>🌡️ 15-25°C</span>
+                        <span>💬 汉语</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide-content">
+                <div class="col">
+                    <div class="col-header">
+                        <h4>📍 行程安排</h4>
+                    </div>
+                    <div style="flex: 1; overflow-y: auto;">
+                        
+                    <div class="day-card">
+                        <div class="title">D1-2 - 大理｜风花雪月</div>
+                        <div class="detail">📍 洱海·双廊古镇·喜洲古镇·崇圣寺三塔·小普陀</div>
+                        <div class="detail">⏱️ 2天</div>
+                        <div class="tip">💡 租电瓶车环湖全程130公里，建议早上出发。洱海骑行最美路段是龙龛码头到双廊。喜洲粑粑必尝外酥内嫩！双廊海景房推窗见海，拍照绝美。</div>
+                    </div>
+                
+                    <div class="day-card">
+                        <div class="title">D3-4 - 丽江｜古城韵味</div>
+                        <div class="detail">📍 丽江古城·束河古镇·玉龙雪山·蓝月谷·白沙古镇</div>
+                        <div class="detail">⏱️ 2天</div>
+                        <div class="tip">💡 玉龙雪山需提前订票，建议住古城方便逛街。蓝月谷拍照最佳时间上午10-11点。束河古镇比丽江更安静，商业化少。</div>
+                    </div>
+                
+                    <div class="day-card">
+                        <div class="title">D5-7 - 香格里拉｜高原秘境</div>
+                        <div class="detail">📍 普达措公园·松赞林寺·纳帕海·独克宗古城·白水台</div>
+                        <div class="detail">⏱️ 3天</div>
+                        <div class="tip">💡 海拔3300米，注意高反，提前准备氧气瓶。松赞林寺是小布达拉宫。普达措最美季节6-8月。独克宗古城晚上的古城墙拍照很美。</div>
+                    </div>
+                
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="info-block">
+                        <h5>🏨 住宿推荐</h5>
+                        
+                    <div class="info-item">
+                        <span class="name">大理古城民宿 (4.2★)</span>
+                        <span class="price">180-300元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        方便逛吃逛喝，推荐三月街周边
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">双廊海景房 (4.6★)</span>
+                        <span class="price">400-800元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        推窗即是洱海，推窗见海
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">丽江古城客栈 (4.3★)</span>
+                        <span class="price">200-400元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        纳西风情，古城中心位置
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">束河古镇客栈 (4.4★)</span>
+                        <span class="price">150-280元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        安静舒适，比古城更安静
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">香格里拉酒店 (4.1★)</span>
+                        <span class="price">300-500元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        藏式特色，有供氧设备
+                    </div>
+                
+                    </div>
+
+                    <div class="info-block">
+                        <h5>🍜 美食清单</h5>
+                        
+                    <div class="info-item">
+                        <span class="name">喜洲粑粑 ✓</span>
+                        <span class="price">10元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">酸辣鱼 ✓</span>
+                        <span class="price">68元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">铜锅洋芋饭 ✓</span>
+                        <span class="price">25元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">白族三道茶 ✓</span>
+                        <span class="price">38元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">丽江粑粑 ✓</span>
+                        <span class="price">8元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">牦牛火锅 ✓</span>
+                        <span class="price">88元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">酥油茶</span>
+                        <span class="price">15元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">青稞酒</span>
+                        <span class="price">20元</span>
+                    </div>
+                
+                    </div>
+
+                    <div class="info-block">
+                        <h5>📸 拍照机位</h5>
+                        
+                    <div class="photo-item">
+                        <div class="name">📸 龙龛码头日出</div>
+                        <div class="detail">⏰ 6:30-7:00 | 最佳日出点，拍倒影美</div>
+                        <div class="detail">📷 广角镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 双廊古镇下午</div>
+                        <div class="detail">⏰ 16:00-18:00 | 下午光线柔和</div>
+                        <div class="detail">📷 标准镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 喜洲稻田黄昏</div>
+                        <div class="detail">⏰ 18:30-19:30 | 黄昏金色光线</div>
+                        <div class="detail">📷 广角镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 玉龙雪山</div>
+                        <div class="detail">⏰ 上午 | 避开下午云层</div>
+                        <div class="detail">📷 长焦镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 蓝月谷</div>
+                        <div class="detail">⏰ 10:00-11:00 | 湖水碧绿如玉</div>
+                        <div class="detail">📷 广角镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 松赞林寺</div>
+                        <div class="detail">⏰ 下午 | 金色光线照金顶</div>
+                        <div class="detail">📷 标准镜头</div>
+                    </div>
+                
+                    </div>
+
+                    <div class="info-block">
+                        <h5>🎒 必备物品</h5>
+                        <div class="essentials-grid">
+                            <div class='essential-item'>防晒霜SPF50+</div><div class='essential-item'>墨镜</div><div class='essential-item'>帽子</div><div class='essential-item'>氧气瓶（香格里拉）</div><div class='essential-item'>保暖外套</div><div class='essential-item'>充电宝</div><div class='essential-item'>相机</div><div class='essential-item'>舒适步行鞋</div><div class='essential-item'>防蚊液</div><div class='essential-item'>雨伞</div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <strong>💡 旅行贴士</strong><br>
+                        大理紫外线强，一定涂防晒！香格里拉海拔3300米，注意高反，备氧气瓶。丽江古城商业化较重，推荐住束河古镇。带学生证部分景点有优惠。云南口味偏酸辣，吃不了可提前告知。3-5月和9-11月是最佳季节，避开7-8月雨季。租车建议SUV，山路较多。准备些现金，部分地区信号不好。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 左下角图片 -->
+            <div class="corner-images">
+                <img src="https://images.unsplash.com/photo-1537588236776-8d0518b0d0ba?w=300&h=200&fit=crop" alt="风景1" onerror="this.style.display='none'">
+                <img src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=300&h=200&fit=crop" alt="风景2" onerror="this.style.display='none'">
+            </div>
+        </div>
+
+        <!-- 攻略 2 -->
+        <div class="guide-page">
+            <div class="guide-header">
+                <div class="guide-header-bg" style="background-image: url('https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=1200&h=600&fit=crop')"></div>
+                <div class="guide-info">
+                    <span class="tag">日本京都</span>
+                    <h3>日本京都深度游｜千年古都的静美时光</h3>
+                    <div class="meta">
+                        <span>✍️ 日本旅行达人</span>
+                        <span>⏱️ 5天</span>
+                        <span>📅 3-4月樱花季、11月红叶季</span>
+                        <span>💰 8000-12000元</span>
+                        <span>🚗 JR Pass 7日券29370日元...</span>
+                        <span>🌍 GMT+9</span>
+                        <span>🌡️ 10-20°C</span>
+                        <span>💬 日语、英语</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide-content">
+                <div class="col">
+                    <div class="col-header">
+                        <h4>📍 行程安排</h4>
+                    </div>
+                    <div style="flex: 1; overflow-y: auto;">
+                        
+                    <div class="day-card">
+                        <div class="title">D1 - 伏见稻荷+清水寺</div>
+                        <div class="detail">📍 伏见稻荷大社·清水寺·二年坂三年坂·八坂神社</div>
+                        <div class="detail">⏱️ 1天</div>
+                        <div class="tip">💡 伏见稻荷7点前去避开人流，清水寺可体验和服。千本鸟居最美在半山腰。二年坂三年坂逛吃逛喝，很多特色小店，推荐买伴手礼。</div>
+                    </div>
+                
+                    <div class="day-card">
+                        <div class="title">D2 - 岚山+金阁寺</div>
+                        <div class="detail">📍 岚山竹林·金阁寺·天龙寺·渡月桥</div>
+                        <div class="detail">⏱️ 1天</div>
+                        <div class="tip">💡 岚山竹林早晨最美，金阁寺晴天拍照效果佳。岚山小火车推荐坐到龟山公园。天龙寺枯山水值得看，禅意十足。渡月桥是赏樱名所，春天必去。</div>
+                    </div>
+                
+                    <div class="day-card">
+                        <div class="title">D3 - 奈良+大阪</div>
+                        <div class="detail">📍 奈良公园·东大寺·春日大社·道顿堀·黑门市场</div>
+                        <div class="detail">⏱️ 1天</div>
+                        <div class="tip">💡 鹿仙贝150日元，小心小鹿很贪吃！东大寺世界最大木造建筑，必看。大阪道顿堀是美食天堂，章鱼烧、大阪烧必尝。黑门市场海鲜新鲜，上午去最好。</div>
+                    </div>
+                
+                    <div class="day-card">
+                        <div class="title">D4 - 祇园+二条城</div>
+                        <div class="detail">📍 祇园·八坂神社·二条城·锦市场</div>
+                        <div class="detail">⏱️ 1天</div>
+                        <div class="tip">💡 傍晚可能有艺伎出没，但请勿拍照。二条城是德川家康的居城，必看。锦市场被称为'京都的厨房'，可品尝各种小吃，章鱼烧、玉子烧必尝。</div>
+                    </div>
+                
+                    <div class="day-card">
+                        <div class="title">D5 - 锦市场+返程</div>
+                        <div class="detail">📍 锦市场·京都站</div>
+                        <div class="detail">⏱️ 半天</div>
+                        <div class="tip">💡 锦市场可品尝各种小吃，章鱼烧、玉子烧必尝。京都站购物方便，很多伴手礼。京都站伊势丹是购物天堂，必买伴手礼。</div>
+                    </div>
+                
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="info-block">
+                        <h5>🏨 住宿推荐</h5>
+                        
+                    <div class="info-item">
+                        <span class="name">京都站周边酒店 (4.3★)</span>
+                        <span class="price">500-800元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        交通便利，购物方便
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">祇园日式旅馆 (4.7★)</span>
+                        <span class="price">800-1500元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        传统体验，有温泉
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">岚山温泉酒店 (4.5★)</span>
+                        <span class="price">1000-2000元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        含温泉，环境清幽
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">Airbnb民宿 (4.2★)</span>
+                        <span class="price">400-600元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        性价比高，有厨房
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">锦市场周边 (4.4★)</span>
+                        <span class="price">600-900元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        美食环绕，夜市方便
+                    </div>
+                
+                    </div>
+
+                    <div class="info-block">
+                        <h5>🍜 美食清单</h5>
+                        
+                    <div class="info-item">
+                        <span class="name">怀石料理 ✓</span>
+                        <span class="price">300-800元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">抹茶甜点 ✓</span>
+                        <span class="price">30-60元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">章鱼烧 ✓</span>
+                        <span class="price">25元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">一兰拉面</span>
+                        <span class="price">45元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">寿司 ✓</span>
+                        <span class="price">80-200元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">天妇罗 ✓</span>
+                        <span class="price">60-120元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">玉子烧 ✓</span>
+                        <span class="price">15元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">关东煮</span>
+                        <span class="price">35元</span>
+                    </div>
+                
+                    </div>
+
+                    <div class="info-block">
+                        <h5>📸 拍照机位</h5>
+                        
+                    <div class="photo-item">
+                        <div class="name">📸 伏见稻荷</div>
+                        <div class="detail">⏰ 清晨 | 千本鸟居半山腰，光线最美</div>
+                        <div class="detail">📷 广角镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 岚山竹林</div>
+                        <div class="detail">⏰ 早晨/傍晚 | 光线最美，绿色治愈</div>
+                        <div class="detail">📷 标准镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 金阁寺</div>
+                        <div class="detail">⏰ 晴天上午 | 湖面倒影最佳</div>
+                        <div class="detail">📷 标准镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 清水寺</div>
+                        <div class="detail">⏰ 下午 | 悬空舞台壮丽</div>
+                        <div class="detail">📷 广角镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 奈良公园</div>
+                        <div class="detail">⏰ 上午 | 小鹿最活跃</div>
+                        <div class="detail">📷 长焦镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 祇园街景</div>
+                        <div class="detail">⏰ 傍晚 | 可能有艺伎</div>
+                        <div class="detail">📷 标准镜头</div>
+                    </div>
+                
+                    </div>
+
+                    <div class="info-block">
+                        <h5>🎒 必备物品</h5>
+                        <div class="essentials-grid">
+                            <div class='essential-item'>JR Pass</div><div class='essential-item'>Suica卡</div><div class='essential-item'>转换插头</div><div class='essential-item'>护照</div><div class='essential-item'>现金（很多地方不支持刷卡）</div><div class='essential-item'>舒适步行鞋</div><div class='essential-item'>便携Wi-Fi</div><div class='essential-item'>雨伞</div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <strong>💡 旅行贴士</strong><br>
+                        建议购买JR Pass，7日券非常划算。日本酒店需提前1个月预订。进入寺庙需脱鞋，衣着得体。日本电车很准时，但末班车很早（11点左右）。建议下载Google Maps和换乘案内APP。日本很多地方不支持刷卡，带现金。1元人民币≈5日元。樱花季和红叶季住宿提前3-6个月预订。日本便利店7-11、Lawson很方便，可买饭团、便当。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 左下角图片 -->
+            <div class="corner-images">
+                <img src="https://images.unsplash.com/photo-1528360983277-13d9b152c6d4?w=300&h=200&fit=crop" alt="风景1" onerror="this.style.display='none'">
+                <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=300&h=200&fit=crop" alt="风景2" onerror="this.style.display='none'">
+            </div>
+        </div>
+
+        <!-- 攻略 3 -->
+        <div class="guide-page">
+            <div class="guide-header">
+                <div class="guide-header-bg" style="background-image: url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=1200&h=600&fit=crop')"></div>
+                <div class="guide-info">
+                    <span class="tag">新疆</span>
+                    <h3>新疆自驾30天｜穿越天山南北的壮美</h3>
+                    <div class="meta">
+                        <span>✍️ 户外探险家</span>
+                        <span>⏱️ 30天</span>
+                        <span>📅 6-10月</span>
+                        <span>💰 15000-20000元</span>
+                        <span>🚗 自驾SUV，独库公路仅6-10月开放...</span>
+                        <span>🌍 GMT+8</span>
+                        <span>🌡️ 5-25°C</span>
+                        <span>💬 汉语、维吾尔语</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide-content">
+                <div class="col">
+                    <div class="col-header">
+                        <h4>📍 行程安排</h4>
+                    </div>
+                    <div style="flex: 1; overflow-y: auto;">
+                        
+                    <div class="day-card">
+                        <div class="title">D1-12 - 北疆环线</div>
+                        <div class="detail">📍 乌鲁木齐·布尔津·喀纳斯·禾木·魔鬼城·克拉玛依</div>
+                        <div class="detail">⏱️ 12天</div>
+                        <div class="tip">💡 喀纳斯三湾必看（神仙湾、月亮湾、卧龙湾），禾木看日出日落。布尔津是进入喀纳斯的门户，可在此休整。魔鬼城风蚀地貌，日落时分最美。禾木的图瓦人小木屋是特色，清晨的炊烟很美。</div>
+                    </div>
+                
+                    <div class="day-card">
+                        <div class="title">D13-20 - 独库公路</div>
+                        <div class="detail">📍 克拉玛依·赛里木湖·那拉提·巴音布鲁克·库车</div>
+                        <div class="detail">⏱️ 8天</div>
+                        <div class="tip">💡 一日四季，最高点哈希勒根达坂海拔3400米，注意高反。赛里木湖大西洋最后一滴眼泪，湖边露营看星空，银河清晰可见。那拉提草原6月最美，野花盛开。巴音布鲁克九曲十八弯日落绝美。</div>
+                    </div>
+                
+                    <div class="day-card">
+                        <div class="title">D21-30 - 南疆人文</div>
+                        <div class="detail">📍 库车·喀什·帕米尔高原·塔县·返回乌鲁木齐</div>
+                        <div class="detail">⏱️ 10天</div>
+                        <div class="tip">💡 喀什老城活着的千年古城，帕米尔高原世界屋脊。白沙湖湖面如镜，卡拉库里湖慕士塔格峰倒影。塔县石头城遗址值得一看。盘龙古道是古丝绸之路，历史厚重。</div>
+                    </div>
+                
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="info-block">
+                        <h5>🏨 住宿推荐</h5>
+                        
+                    <div class="info-item">
+                        <span class="name">喀纳斯湖边木屋 (4.2★)</span>
+                        <span class="price">400-800元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        湖景房，早起看日出
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">禾木图瓦人家 (4.4★)</span>
+                        <span class="price">200-400元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        特色小木屋，图瓦人体验
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">赛里木湖房车营地 (4.3★)</span>
+                        <span class="price">300元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        湖边露营，看星空
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">那拉提草原毡房 (4.1★)</span>
+                        <span class="price">250-450元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        草原毡房，草原体验
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">喀什老城民宿 (4.5★)</span>
+                        <span class="price">150-300元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        民俗体验，老城中心
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">帕米尔高原民宿 (4.2★)</span>
+                        <span class="price">200-350元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        高原民宿，含供氧
+                    </div>
+                
+                    </div>
+
+                    <div class="info-block">
+                        <h5>🍜 美食清单</h5>
+                        
+                    <div class="info-item">
+                        <span class="name">大盘鸡 ✓</span>
+                        <span class="price">88元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">手抓饭 ✓</span>
+                        <span class="price">45元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">烤包子 ✓</span>
+                        <span class="price">8元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">烤全羊 ✓</span>
+                        <span class="price">388元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">酸奶疙瘩 ✓</span>
+                        <span class="price">15元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">馕 ✓</span>
+                        <span class="price">3元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">油塔子 ✓</span>
+                        <span class="price">18元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">烤羊肉串 ✓</span>
+                        <span class="price">12元/串</span>
+                    </div>
+                
+                    </div>
+
+                    <div class="info-block">
+                        <h5>📸 拍照机位</h5>
+                        
+                    <div class="photo-item">
+                        <div class="name">📸 喀纳斯</div>
+                        <div class="detail">⏰ 全天 | 三湾必拍，神仙湾晨雾</div>
+                        <div class="detail">📷 广角+长焦</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 禾木</div>
+                        <div class="detail">⏰ 日出日落 | 观景台全景，童话小屋</div>
+                        <div class="detail">📷 广角镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 赛里木湖</div>
+                        <div class="detail">⏰ 日出日落 | 湖面如镜，雪山倒影</div>
+                        <div class="detail">📷 广角镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 帕米尔高原</div>
+                        <div class="detail">⏰ 上午 | 雪山倒影，高原风光</div>
+                        <div class="detail">📷 长焦镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 魔鬼城</div>
+                        <div class="detail">⏰ 傍晚 | 风蚀地貌，日落最美</div>
+                        <div class="detail">📷 标准镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 独库公路</div>
+                        <div class="detail">⏰ 全天 | 一日四季，壮丽景观</div>
+                        <div class="detail">📷 标准镜头</div>
+                    </div>
+                
+                    </div>
+
+                    <div class="info-block">
+                        <h5>🎒 必备物品</h5>
+                        <div class="essentials-grid">
+                            <div class='essential-item'>SUV租车</div><div class='essential-item'>自驾保险</div><div class='essential-item'>厚外套</div><div class='essential-item'>防晒用品</div><div class='essential-item'>氧气瓶</div><div class='essential-item'>高原药物</div><div class='essential-item'>备用轮胎</div><div class='essential-item'>应急工具箱</div><div class='essential-item'>热水壶</div><div class='essential-item'>充电宝</div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <strong>💡 旅行贴士</strong><br>
+                        新疆昼夜温差大，带厚外套！高原地区注意防晒补水。独库公路弯道多需小心驾驶。新疆安检较多，预留充足时间。部分地区信号不好，提前下载离线地图。新疆紫外线强，防晒！新疆干燥，多喝水。新疆时区GMT+8，但作息比内地晚2小时。新疆景点间距远，注意加油。新疆美食偏重口味，吃不了可提前告知。新疆人热情好客，尊重当地文化。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 左下角图片 -->
+            <div class="corner-images">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=300&h=200&fit=crop" alt="风景1" onerror="this.style.display='none'">
+                <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=300&h=200&fit=crop" alt="风景2" onerror="this.style.display='none'">
+            </div>
+        </div>
+
+        <!-- 攻略 4 -->
+        <div class="guide-page">
+            <div class="guide-header">
+                <div class="guide-header-bg" style="background-image: url('https://images.unsplash.com/photo-1527525443983-6e60c75fff46?w=1200&h=600&fit=crop')"></div>
+                <div class="guide-info">
+                    <span class="tag">四川成都</span>
+                    <h3>四川成都深度游｜熊猫火锅慢生活</h3>
+                    <div class="meta">
+                        <span>✍️ 川渝吃货</span>
+                        <span>⏱️ 4天</span>
+                        <span>📅 3-4月、9-10月</span>
+                        <span>💰 2000-3000元</span>
+                        <span>🚗 地铁方便，机场大巴30分钟到市区...</span>
+                        <span>🌍 GMT+8</span>
+                        <span>🌡️ 15-25°C</span>
+                        <span>💬 汉语、四川话</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide-content">
+                <div class="col">
+                    <div class="col-header">
+                        <h4>📍 行程安排</h4>
+                    </div>
+                    <div style="flex: 1; overflow-y: auto;">
+                        
+                    <div class="day-card">
+                        <div class="title">D1 - 熊猫基地+春熙路</div>
+                        <div class="detail">📍 大熊猫基地·春熙路·IFS太古里</div>
+                        <div class="detail">⏱️ 1天</div>
+                        <div class="tip">💡 熊猫8:00-10:00最活跃，春熙路网红小酒馆打卡。IFS爬墙熊猫必打卡，太古里逛吃逛喝。春熙路是成都最繁华的商圈，购物方便。</div>
+                    </div>
+                
+                    <div class="day-card">
+                        <div class="title">D2 - 宽窄巷子+武侯祠</div>
+                        <div class="detail">📍 宽窄巷子·武侯祠·锦里</div>
+                        <div class="detail">⏱️ 1天</div>
+                        <div class="tip">💡 锦里18:30后灯笼亮起最美，小吃一条街。武侯祠三国文化，必看。宽窄巷子老成都体验，窄巷文艺小店多。宽巷子是老成都的体验，窄巷子是小资情调。</div>
+                    </div>
+                
+                    <div class="day-card">
+                        <div class="title">D3 - 青城山+都江堰</div>
+                        <div class="detail">📍 青城山·都江堰</div>
+                        <div class="detail">⏱️ 1天</div>
+                        <div class="tip">💡 青城山索道上山步行下山，都江堰16:00看夕阳。青城山道教名山，前山景点多。都江堰古代水利工程奇迹，必看。青城后山更清幽，人少景美。</div>
+                    </div>
+                
+                    <div class="day-card">
+                        <div class="title">D4 - 杜甫草堂+人民公园</div>
+                        <div class="detail">📍 杜甫草堂·人民公园</div>
+                        <div class="detail">⏱️ 半天</div>
+                        <div class="tip">💡 人民公园鹤鸣茶社百年老茶馆，体验慢生活。杜甫草堂幽静雅致，适合慢游。鹤鸣茶社是成都茶文化的代表，15-30元/杯，坐一下午都可以。</div>
+                    </div>
+                
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="info-block">
+                        <h5>🏨 住宿推荐</h5>
+                        
+                    <div class="info-item">
+                        <span class="name">春熙路商圈酒店 (4.3★)</span>
+                        <span class="price">200-400元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        交通方便，购物方便
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">太古里周边 (4.5★)</span>
+                        <span class="price">400-800元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        潮流商圈，品牌云集
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">宽窄巷子附近 (4.4★)</span>
+                        <span class="price">300-600元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        文化氛围，方便逛吃
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">天府广场 (4.2★)</span>
+                        <span class="price">250-450元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        中心位置，交通枢纽
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">文殊院周边 (4.1★)</span>
+                        <span class="price">180-350元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        安静舒适，性价比高
+                    </div>
+                
+                    </div>
+
+                    <div class="info-block">
+                        <h5>🍜 美食清单</h5>
+                        
+                    <div class="info-item">
+                        <span class="name">火锅（蜀九香） ✓</span>
+                        <span class="price">80-120元/人</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">兔头 ✓</span>
+                        <span class="price">15元/个</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">冒菜 ✓</span>
+                        <span class="price">35元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">冰粉 ✓</span>
+                        <span class="price">8元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">钟水饺 ✓</span>
+                        <span class="price">18元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">甜水面 ✓</span>
+                        <span class="price">12元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">担担面 ✓</span>
+                        <span class="price">15元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">麻婆豆腐 ✓</span>
+                        <span class="price">28元</span>
+                    </div>
+                
+                    </div>
+
+                    <div class="info-block">
+                        <h5>📸 拍照机位</h5>
+                        
+                    <div class="photo-item">
+                        <div class="name">📸 熊猫基地</div>
+                        <div class="detail">⏰ 8:00-10:00 | 太阳月亮产房，小熊猫最可爱</div>
+                        <div class="detail">📷 长焦镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 IFS爬墙熊猫</div>
+                        <div class="detail">⏰ 全天 | 经典打卡点，必拍</div>
+                        <div class="detail">📷 标准镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 锦里夜景</div>
+                        <div class="detail">⏰ 18:30后 | 灯笼夜景，氛围感</div>
+                        <div class="detail">📷 广角镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 宽窄巷子</div>
+                        <div class="detail">⏰ 下午 | 人文建筑，老成都</div>
+                        <div class="detail">📷 标准镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 都江堰</div>
+                        <div class="detail">⏰ 16:00 | 夕阳下水利工程</div>
+                        <div class="detail">📷 广角镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 青城山</div>
+                        <div class="detail">⏰ 上午 | 道教名山，绿树成荫</div>
+                        <div class="detail">📷 标准镜头</div>
+                    </div>
+                
+                    </div>
+
+                    <div class="info-block">
+                        <h5>🎒 必备物品</h5>
+                        <div class="essentials-grid">
+                            <div class='essential-item'>防晒霜</div><div class='essential-item'>雨伞</div><div class='essential-item'>舒适步行鞋</div><div class='essential-item'>充电宝</div><div class='essential-item'>相机</div><div class='essential-item'>驱蚊液</div><div class='essential-item'>常用药品</div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <strong>💡 旅行贴士</strong><br>
+                        成都慢节奏，建议每天只安排2-3个景点。火锅建议中午吃避开排队高峰。人民公园喝茶是必体验，鹤鸣茶社15-30元/杯。3-4月和9-10月是最佳季节，避开7-8月高温。成都口味偏麻辣，吃不了可提前告知。成都火锅分麻辣火锅、清汤火锅，根据口味选择。成都茶馆文化浓厚，建议体验。成都小吃丰富，担担面、钟水饺、甜水面必尝。成都方言四川话，当地人说话快。成都地铁方便，建议下载天府通APP。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 左下角图片 -->
+            <div class="corner-images">
+                <img src="https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=300&h=200&fit=crop" alt="风景1" onerror="this.style.display='none'">
+                <img src="https://images.unsplash.com/photo-1565967511849-76a60a516170?w=300&h=200&fit=crop" alt="风景2" onerror="this.style.display='none'">
+            </div>
+        </div>
+
+        <!-- 攻略 5 -->
+        <div class="guide-page">
+            <div class="guide-header">
+                <div class="guide-header-bg" style="background-image: url('https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=1200&h=600&fit=crop')"></div>
+                <div class="guide-info">
+                    <span class="tag">泰国清迈</span>
+                    <h3>泰国清迈慢生活｜古城寺庙与夜市美食</h3>
+                    <div class="meta">
+                        <span>✍️ 东南亚旅行家</span>
+                        <span>⏱️ 5天</span>
+                        <span>📅 11-2月（雨季后）</span>
+                        <span>💰 3000-5000元</span>
+                        <span>🚗 落地签2000泰铢，Grab打车方便...</span>
+                        <span>🌍 GMT+7</span>
+                        <span>🌡️ 25-35°C</span>
+                        <span>💬 泰语、英语</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide-content">
+                <div class="col">
+                    <div class="col-header">
+                        <h4>📍 行程安排</h4>
+                    </div>
+                    <div style="flex: 1; overflow-y: auto;">
+                        
+                    <div class="day-card">
+                        <div class="title">D1 - 古城寺庙巡礼</div>
+                        <div class="detail">📍 契迪龙寺·帕辛寺·周日夜市</div>
+                        <div class="detail">⏱️ 1天</div>
+                        <div class="tip">💡 周日夜市17:00-22:00，必买手工工艺品。契迪龙寺宏大的古寺遗址，拍照出片。帕辛寺兰纳风格建筑，金碧辉煌。古城墙骑行一周，很有感觉。</div>
+                    </div>
+                
+                    <div class="day-card">
+                        <div class="title">D2 - 双龙寺+宁曼路</div>
+                        <div class="detail">📍 双龙寺·宁曼路·咖啡馆</div>
+                        <div class="detail">⏱️ 1天</div>
+                        <div class="tip">💡 双龙寺16:00看日落，俯瞰清迈全景。宁曼路文艺街区，咖啡馆和设计店聚集。Ristr8to世界级拉花咖啡，必试。Cheevit Cheeva网红Bingsu，推荐。</div>
+                    </div>
+                
+                    <div class="day-card">
+                        <div class="title">D3 - 大象营+SPA</div>
+                        <div class="detail">📍 Patara大象营·泰式SPA</div>
+                        <div class="detail">⏱️ 1天</div>
+                        <div class="tip">💡 大象营6000泰铢/人，保护式体验不骑大象。泰式SPA推荐Lila Thai Massage，由前囚犯提供培训就业。SPA很便宜，500-1500泰铢/小时。</div>
+                    </div>
+                
+                    <div class="day-card">
+                        <div class="title">D4 - 湄平河+瓦洛洛</div>
+                        <div class="detail">📍 湄平河·瓦洛洛市场</div>
+                        <div class="detail">⏱️ 1天</div>
+                        <div class="tip">💡 瓦洛洛市场本地人市场，物价便宜。湄平河The Good View河边晚餐，人均300-500泰铢，日落时分最美。湄平河游船体验，推荐傍晚。</div>
+                    </div>
+                
+                    <div class="day-card">
+                        <div class="title">D5 - 古城悠闲+返程</div>
+                        <div class="detail">📍 塔佩门·古城墙·咖啡馆</div>
+                        <div class="detail">⏱️ 半天</div>
+                        <div class="tip">💡 塔佩门喂鸽子，古城墙骑行一周。古城咖啡馆发呆，体验慢生活。推荐The Baristro咖啡馆，环境好咖啡香。清迈机场免税店购物方便。</div>
+                    </div>
+                
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="info-block">
+                        <h5>🏨 住宿推荐</h5>
+                        
+                    <div class="info-item">
+                        <span class="name">Rimping Village (4.5★)</span>
+                        <span class="price">300-500元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        精品酒店，设计感
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">Buri Tara (4.3★)</span>
+                        <span class="price">200-350元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        传统风格，性价比
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">Suriwongse Hotel (4.1★)</span>
+                        <span class="price">150-250元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        位置极佳，方便
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">Akyra Manor (4.7★)</span>
+                        <span class="price">800-1200元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        设计感酒店，高端
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">宁曼路酒店 (4.4★)</span>
+                        <span class="price">400-600元/晚</span>
+                    </div>
+                    <div class="info-item" style="font-size: 8px; color: #7F8C8D; padding-left: 3px;">
+                        文艺街区，环境好
+                    </div>
+                
+                    </div>
+
+                    <div class="info-block">
+                        <h5>🍜 美食清单</h5>
+                        
+                    <div class="info-item">
+                        <span class="name">Khao Soi泰北咖喱面 ✓</span>
+                        <span class="price">25元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">芒果糯米饭 ✓</span>
+                        <span class="price">12元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">泰式炒河粉 ✓</span>
+                        <span class="price">12元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">椰子冰淇淋 ✓</span>
+                        <span class="price">10元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">泰式奶茶 ✓</span>
+                        <span class="price">8元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">烤肉串 ✓</span>
+                        <span class="price">3元/串</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">泰式炒饭</span>
+                        <span class="price">15元</span>
+                    </div>
+                
+                    <div class="info-item">
+                        <span class="name">春卷 ✓</span>
+                        <span class="price">5元</span>
+                    </div>
+                
+                    </div>
+
+                    <div class="info-block">
+                        <h5>📸 拍照机位</h5>
+                        
+                    <div class="photo-item">
+                        <div class="name">📸 契迪龙寺</div>
+                        <div class="detail">⏰ 清晨/黄昏 | 古寺遗址，拍照出片</div>
+                        <div class="detail">📷 广角镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 双龙寺</div>
+                        <div class="detail">⏰ 16:00 | 日落俯瞰，全景</div>
+                        <div class="detail">📷 标准镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 周日夜市</div>
+                        <div class="detail">⏰ 17:00后 | 夜市氛围，热闹</div>
+                        <div class="detail">📷 标准镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 宁曼路</div>
+                        <div class="detail">⏰ 下午 | 文艺街区，咖啡馆</div>
+                        <div class="detail">📷 标准镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 塔佩门</div>
+                        <div class="detail">⏰ 下午 | 喂鸽子，打卡</div>
+                        <div class="detail">📷 标准镜头</div>
+                    </div>
+                
+                    <div class="photo-item">
+                        <div class="name">📸 帕辛寺</div>
+                        <div class="detail">⏰ 上午 | 金碧辉煌，建筑</div>
+                        <div class="detail">📷 标准镜头</div>
+                    </div>
+                
+                    </div>
+
+                    <div class="info-block">
+                        <h5>🎒 必备物品</h5>
+                        <div class="essentials-grid">
+                            <div class='essential-item'>防晒霜</div><div class='essential-item'>驱蚊液</div><div class='essential-item'>清凉油</div><div class='essential-item'>轻便夏装</div><div class='essential-item'>人字拖</div><div class='essential-item'>充电宝</div><div class='essential-item'>护照复印件</div><div class='essential-item'>现金泰铢</div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <strong>💡 旅行贴士</strong><br>
+                        11-2月是最佳季节，6-10月是雨季。尊重佛教文化，进入寺庙脱鞋，衣着得体。建议提前电子签证300泰铢。Grab打车方便，下载APP。很多小店不支持刷卡，带现金。1元人民币≈5泰铢。泰国小费文化，一般给20-50泰铢。泰国电压220V，两孔圆插头。泰国时间GMT+7，比中国晚1小时。泰国语言泰语，简单英语：你好Sawasdee，谢谢Khob Khun Krub。泰国交通Grab和红色双条车方便。泰国美食偏甜辣，吃不了可提前告知。泰国佛教文化浓厚，尊重当地。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 左下角图片 -->
+            <div class="corner-images">
+                <img src="https://images.unsplash.com/photo-1599960277428-4342628a890e?w=300&h=200&fit=crop" alt="风景1" onerror="this.style.display='none'">
+                <img src="https://images.unsplash.com/photo-1528181304800-259b08848526?w=300&h=200&fit=crop" alt="风景2" onerror="this.style.display='none'">
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

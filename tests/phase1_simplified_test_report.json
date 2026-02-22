@@ -1,0 +1,161 @@
+{
+  "phase": 1,
+  "phase_name": "趋势研究功能（简化版）",
+  "start_time": 1771520017.6078153,
+  "end_time": 1771520035.6249812,
+  "duration_seconds": 18.017165899276733,
+  "tests": [
+    {
+      "test_name": "BoCha 全网搜索（模拟）",
+      "status": "completed",
+      "results_count": 8,
+      "duration_seconds": 8.007493257522583,
+      "results": [
+        {
+          "title": "关于自媒体运营技巧的深度分析",
+          "url": "https://example.com/article1",
+          "snippet": "这是一篇关于自媒体运营技巧的详细文章..."
+        },
+        {
+          "title": "自媒体运营技巧的实战技巧",
+          "url": "https://example.com/article2",
+          "snippet": "自媒体运营技巧的10个实用技巧..."
+        },
+        {
+          "title": "关于小红书爆款运营的深度分析",
+          "url": "https://example.com/article1",
+          "snippet": "这是一篇关于小红书爆款运营的详细文章..."
+        },
+        {
+          "title": "小红书爆款运营的实战技巧",
+          "url": "https://example.com/article2",
+          "snippet": "小红书爆款运营的10个实用技巧..."
+        },
+        {
+          "title": "关于AI工具自动化的深度分析",
+          "url": "https://example.com/article1",
+          "snippet": "这是一篇关于AI工具自动化的详细文章..."
+        },
+        {
+          "title": "AI工具自动化的实战技巧",
+          "url": "https://example.com/article2",
+          "snippet": "AI工具自动化的10个实用技巧..."
+        },
+        {
+          "title": "关于内容创作效率的深度分析",
+          "url": "https://example.com/article1",
+          "snippet": "这是一篇关于内容创作效率的详细文章..."
+        },
+        {
+          "title": "内容创作效率的实战技巧",
+          "url": "https://example.com/article2",
+          "snippet": "内容创作效率的10个实用技巧..."
+        }
+      ],
+      "type": "mock"
+    },
+    {
+      "test_name": "小红书搜索（模拟）",
+      "status": "completed",
+      "results_count": 15,
+      "duration_seconds": 10.00950312614441,
+      "notes": [
+        {
+          "title": "AI工具相关笔记1",
+          "likes": 150,
+          "collects": 75,
+          "comments": 30
+        },
+        {
+          "title": "AI工具相关笔记2",
+          "likes": 225,
+          "collects": 120,
+          "comments": 45
+        },
+        {
+          "title": "AI工具相关笔记3",
+          "likes": 300,
+          "collects": 165,
+          "comments": 60
+        },
+        {
+          "title": "自媒体运营相关笔记1",
+          "likes": 150,
+          "collects": 75,
+          "comments": 30
+        },
+        {
+          "title": "自媒体运营相关笔记2",
+          "likes": 225,
+          "collects": 120,
+          "comments": 45
+        },
+        {
+          "title": "自媒体运营相关笔记3",
+          "likes": 300,
+          "collects": 165,
+          "comments": 60
+        },
+        {
+          "title": "爆款文案相关笔记1",
+          "likes": 150,
+          "collects": 75,
+          "comments": 30
+        },
+        {
+          "title": "爆款文案相关笔记2",
+          "likes": 225,
+          "collects": 120,
+          "comments": 45
+        },
+        {
+          "title": "爆款文案相关笔记3",
+          "likes": 300,
+          "collects": 165,
+          "comments": 60
+        },
+        {
+          "title": "涨粉技巧相关笔记1",
+          "likes": 150,
+          "collects": 75,
+          "comments": 30
+        }
+      ],
+      "type": "mock"
+    },
+    {
+      "test_name": "趋势分析（模拟）",
+      "status": "completed",
+      "total_trends": 5,
+      "hot_topics_count": 5,
+      "type": "mock"
+    }
+  ],
+  "test_log": [
+    {
+      "timestamp": "2026-02-20T00:53:45.615347",
+      "test": "BoCha搜索",
+      "status": "completed",
+      "duration": 8.007493257522583
+    },
+    {
+      "timestamp": "2026-02-20T00:53:55.624919",
+      "test": "小红书搜索",
+      "status": "completed",
+      "duration": 10.00950312614441
+    },
+    {
+      "timestamp": "2026-02-20T00:53:55.624979",
+      "test": "趋势分析",
+      "status": "completed",
+      "duration": 5
+    }
+  ],
+  "summary": {
+    "total_tests": 3,
+    "passed_tests": 3,
+    "failed_tests": 0,
+    "overall_status": "success"
+  },
+  "type": "simplified_mock"
+}

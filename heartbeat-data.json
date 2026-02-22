@@ -1,0 +1,74 @@
+{
+  "lastChecks": {
+    "email": null,
+    "calendar": null,
+    "evomap": null,
+    "hackerone": null,
+    "pinchtab": null,
+    "algora": null,
+    "projects": null,
+    "memory": null,
+    "skills": null
+  },
+  "bountyTracking": {
+    "highValueTasks": [],
+    "lastUpdated": null
+  },
+  "skillLearning": {
+    "newSkills": [
+      {
+        "name": "OpenClaw 自定义AI代理构建",
+        "category": "AI/代理平台",
+        "date": "2026-02-10",
+        "progress": 100,
+        "notes": "掌握核心概念和技能系统"
+      },
+      {
+        "name": "Media Crawler",
+        "category": "数据爬取",
+        "date": "2026-02-12",
+        "progress": 80,
+        "notes": "掌握小红书搜索和市场情报功能"
+      },
+      {
+        "name": "Algora 平台",
+        "category": "悬赏平台",
+        "date": "2026-02-20",
+        "progress": 90,
+        "notes": "完成平台探索，创建自动化工具"
+      },
+      {
+        "name": "HackerOne 安全测试",
+        "category": "安全",
+        "date": null,
+        "progress": 0,
+        "notes": "待学习"
+      },
+      {
+        "name": "Pinchtab 平台",
+        "category": "悬赏平台",
+        "date": null,
+        "progress": 0,
+        "notes": "待探索"
+      }
+    ]
+  },
+  "toolUsage": {
+    "feishu-doc": 0,
+    "feishu-bitable": 0,
+    "xlsx": 0,
+    "github": 0,
+    "coding-agent": 0,
+    "weather": 0,
+    "media-crawler": 0,
+    "xhs-auto-publisher": 0,
+    "browser": 0,
+    "tts": 0,
+    "image": 0,
+    "message": 0
+  },
+  "lastReport": null,
+  "smartRecommendations": [],
+  "riskAssessment": [],
+  "actionItems": []
+}

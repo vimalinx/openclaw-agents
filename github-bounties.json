@@ -1,0 +1,544 @@
+{
+  "timestamp": "2026-02-20T03:21:21.154Z",
+  "totalIssues": 100,
+  "issuesWithBounty": [
+    {
+      "title": "Bounty - Add Decibel Perpetual Connector",
+      "bountyAmount": 3000,
+      "url": "https://github.com/hummingbot/hummingbot/issues/8028",
+      "repo": "https://api.github.com/repos/hummingbot/hummingbot",
+      "number": 8028,
+      "techStack": [
+        "TypeScript",
+        "Playwright",
+        "AI/ML",
+        "Go"
+      ]
+    },
+    {
+      "title": "[Enhancement]: Use pgBackRest for Postgres backups",
+      "bountyAmount": 1000,
+      "url": "https://github.com/coollabsio/coolify/issues/7423",
+      "repo": "https://api.github.com/repos/coollabsio/coolify",
+      "number": 7423,
+      "techStack": [
+        "TypeScript",
+        "AI/ML",
+        "Go"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Claim: Mobile SERP Tracker, Google Maps Lead Generator, Google Reviews & Business Data API",
+      "bountyAmount": 402,
+      "url": "https://github.com/bolivian-peru/marketplace-service-template/issues/91",
+      "repo": "https://api.github.com/repos/bolivian-peru/marketplace-service-template",
+      "number": 91,
+      "techStack": [
+        "Python",
+        "TypeScript",
+        "JavaScript",
+        "AI/ML",
+        "Go"
+      ]
+    },
+    {
+      "title": "[Bug]: Sporadic Permission denied (publickey,password).",
+      "bountyAmount": 250,
+      "url": "https://github.com/coollabsio/coolify/issues/7724",
+      "repo": "https://api.github.com/repos/coollabsio/coolify",
+      "number": 7724,
+      "techStack": [
+        "TypeScript",
+        "AI/ML",
+        "Go"
+      ]
+    },
+    {
+      "title": "Bounty: Deeplinks support + Raycast Extension",
+      "bountyAmount": 200,
+      "url": "https://github.com/CapSoftware/Cap/issues/1540",
+      "repo": "https://api.github.com/repos/CapSoftware/Cap",
+      "number": 1540,
+      "techStack": [
+        "Unknown"
+      ]
+    },
+    {
+      "title": "[BOUNTY] x402 Agent Intel Marketplace — Agents Sell Market Analysis to Each Other — 1.0 SOL",
+      "bountyAmount": 110,
+      "url": "https://github.com/bolivian-peru/baozi-openclaw/issues/40",
+      "repo": "https://api.github.com/repos/bolivian-peru/baozi-openclaw",
+      "number": 40,
+      "techStack": [
+        "TypeScript",
+        "JavaScript",
+        "Playwright",
+        "AI/ML",
+        "Go"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Night Kitchen — Bilingual Market Report Agent — 0.5 SOL",
+      "bountyAmount": 110,
+      "url": "https://github.com/bolivian-peru/baozi-openclaw/issues/39",
+      "repo": "https://api.github.com/repos/bolivian-peru/baozi-openclaw",
+      "number": 39,
+      "techStack": [
+        "TypeScript",
+        "AI/ML",
+        "Go"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Share Card Viral Engine — Auto-Post Market Cards Across Platforms — 0.75 SOL",
+      "bountyAmount": 110,
+      "url": "https://github.com/bolivian-peru/baozi-openclaw/issues/37",
+      "repo": "https://api.github.com/repos/bolivian-peru/baozi-openclaw",
+      "number": 37,
+      "techStack": [
+        "TypeScript",
+        "AI/ML",
+        "Go"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Agent Arena — Live AI Betting Competition Dashboard — 1.0 SOL",
+      "bountyAmount": 110,
+      "url": "https://github.com/bolivian-peru/baozi-openclaw/issues/36",
+      "repo": "https://api.github.com/repos/bolivian-peru/baozi-openclaw",
+      "number": 36,
+      "techStack": [
+        "TypeScript",
+        "AI/ML",
+        "Go"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Calls Tracker — Influencer Prediction Reputation System — 1.0 SOL",
+      "bountyAmount": 110,
+      "url": "https://github.com/bolivian-peru/baozi-openclaw/issues/35",
+      "repo": "https://api.github.com/repos/bolivian-peru/baozi-openclaw",
+      "number": 35,
+      "techStack": [
+        "TypeScript",
+        "AI/ML",
+        "Go"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Trust Proof Explorer — Verifiable Oracle Transparency Dashboard — 0.75 SOL",
+      "bountyAmount": 100,
+      "url": "https://github.com/bolivian-peru/baozi-openclaw/issues/43",
+      "repo": "https://api.github.com/repos/bolivian-peru/baozi-openclaw",
+      "number": 43,
+      "techStack": [
+        "Python",
+        "TypeScript",
+        "AI/ML",
+        "Rust",
+        "Go"
+      ]
+    },
+    {
+      "title": "[Enhancement]: Don't timeout public database proxies after 10 min",
+      "bountyAmount": 100,
+      "url": "https://github.com/coollabsio/coolify/issues/7743",
+      "repo": "https://api.github.com/repos/coollabsio/coolify",
+      "number": 7743,
+      "techStack": [
+        "TypeScript"
+      ]
+    },
+    {
+      "title": "Refactor: Extract validation to utils module",
+      "bountyAmount": 100,
+      "url": "https://github.com/ApexOpsStudio/ai-gitops-test-target/issues/3",
+      "repo": "https://api.github.com/repos/ApexOpsStudio/ai-gitops-test-target",
+      "number": 3,
+      "techStack": [
+        "Python",
+        "TypeScript",
+        "AI/ML"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Human Funnel Stage 4-5 Conversion Pack (Landing + Referral + Brag Card) — 90 RTC",
+      "bountyAmount": 90,
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/318",
+      "repo": "https://api.github.com/repos/Scottcjn/rustchain-bounties",
+      "number": 318,
+      "techStack": [
+        "Python",
+        "TypeScript",
+        "AI/ML",
+        "Rust"
+      ]
+    },
+    {
+      "title": "Fix: Crash when config file missing",
+      "bountyAmount": 75,
+      "url": "https://github.com/ApexOpsStudio/ai-gitops-test-target/issues/2",
+      "repo": "https://api.github.com/repos/ApexOpsStudio/ai-gitops-test-target",
+      "number": 2,
+      "techStack": [
+        "Python",
+        "TypeScript",
+        "AI/ML"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Human Funnel Stage 2 Origin Story Pack — 60 RTC",
+      "bountyAmount": 60,
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/316",
+      "repo": "https://api.github.com/repos/Scottcjn/rustchain-bounties",
+      "number": 316,
+      "techStack": [
+        "TypeScript",
+        "AI/ML",
+        "Rust"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Dynamic Shields Badges v2 (per-hunter, richer metrics, docs) (60 RTC)",
+      "bountyAmount": 60,
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/310",
+      "repo": "https://api.github.com/repos/Scottcjn/rustchain-bounties",
+      "number": 310,
+      "techStack": [
+        "Python",
+        "TypeScript",
+        "JavaScript",
+        "AI/ML",
+        "Rust",
+        "Go"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Human Funnel Stage 3 Proof Pack (Testimonials + 5-Minute Guide) — 55 RTC",
+      "bountyAmount": 55,
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/317",
+      "repo": "https://api.github.com/repos/Scottcjn/rustchain-bounties",
+      "number": 317,
+      "techStack": [
+        "TypeScript",
+        "AI/ML",
+        "Rust"
+      ]
+    },
+    {
+      "title": "[BOUNTY] BCOS Certified Directory MVP (50 RTC)",
+      "bountyAmount": 50,
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/301",
+      "repo": "https://api.github.com/repos/Scottcjn/rustchain-bounties",
+      "number": 301,
+      "techStack": [
+        "Python",
+        "TypeScript",
+        "JavaScript",
+        "AI/ML",
+        "Rust",
+        "Go",
+        "C++"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Write a BoTTube integration post (dofollow backlink + code sample) (50 RTC)",
+      "bountyAmount": 50,
+      "url": "https://github.com/Scottcjn/bottube/issues/158",
+      "repo": "https://api.github.com/repos/Scottcjn/bottube",
+      "number": 158,
+      "techStack": [
+        "Python",
+        "TypeScript",
+        "JavaScript",
+        "AI/ML",
+        "Rust"
+      ]
+    },
+    {
+      "title": "Add --json output format",
+      "bountyAmount": 50,
+      "url": "https://github.com/ApexOpsStudio/ai-gitops-test-target/issues/1",
+      "repo": "https://api.github.com/repos/ApexOpsStudio/ai-gitops-test-target",
+      "number": 1,
+      "techStack": [
+        "TypeScript",
+        "JavaScript",
+        "AI/ML"
+      ]
+    },
+    {
+      "title": "Update dependencies (runframe, circuit-json etc.) to latest version and confirm vercel deployment works",
+      "bountyAmount": 50,
+      "url": "https://github.com/tscircuit/circuitjson.com/issues/79",
+      "repo": "https://api.github.com/repos/tscircuit/circuitjson.com",
+      "number": 79,
+      "techStack": [
+        "TypeScript",
+        "JavaScript",
+        "AI/ML"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Human Funnel Stage 1 Asset Pack (Hooks + Shorts + Memes) — 45 RTC",
+      "bountyAmount": 45,
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/315",
+      "repo": "https://api.github.com/repos/Scottcjn/rustchain-bounties",
+      "number": 315,
+      "techStack": [
+        "Python",
+        "TypeScript",
+        "AI/ML",
+        "Rust"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Retroactive XP + Badge Backfill from Historical Payouts (40 RTC)",
+      "bountyAmount": 40,
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/311",
+      "repo": "https://api.github.com/repos/Scottcjn/rustchain-bounties",
+      "number": 311,
+      "techStack": [
+        "Python",
+        "TypeScript",
+        "AI/ML",
+        "Rust",
+        "Go"
+      ]
+    },
+    {
+      "title": "fix: add Exchange Server 2016 on-premise support",
+      "bountyAmount": 40,
+      "url": "https://github.com/calcom/cal.com/pull/26704",
+      "repo": "https://api.github.com/repos/calcom/cal.com",
+      "number": 26704,
+      "techStack": [
+        "TypeScript",
+        "JavaScript",
+        "AI/ML"
+      ]
+    },
+    {
+      "title": "[BOUNTY] XP/Badge Automation Hardening Tests for GitHub Actions (35 RTC)",
+      "bountyAmount": 35,
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/312",
+      "repo": "https://api.github.com/repos/Scottcjn/rustchain-bounties",
+      "number": 312,
+      "techStack": [
+        "Python",
+        "TypeScript",
+        "JavaScript",
+        "AI/ML",
+        "Rust",
+        "Go"
+      ]
+    },
+    {
+      "title": "[Bug + Multiple Bounties]: Official Selfhosted Supabase MCP Setup hindered by Coolify AND Bounty List",
+      "bountyAmount": 35,
+      "url": "https://github.com/coollabsio/coolify/issues/7458",
+      "repo": "https://api.github.com/repos/coollabsio/coolify",
+      "number": 7458,
+      "techStack": [
+        "TypeScript",
+        "AI/ML",
+        "Rust",
+        "Go"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Integrations: Add BoTTube API example to your agent framework (30 RTC)",
+      "bountyAmount": 30,
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/303",
+      "repo": "https://api.github.com/repos/Scottcjn/rustchain-bounties",
+      "number": 303,
+      "techStack": [
+        "Python",
+        "TypeScript",
+        "AI/ML",
+        "Rust"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Directory Target List + Repost Kit (SEO) — Curate 25 legit sites (25 RTC)",
+      "bountyAmount": 25,
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/302",
+      "repo": "https://api.github.com/repos/Scottcjn/rustchain-bounties",
+      "number": 302,
+      "techStack": [
+        "Python",
+        "TypeScript",
+        "AI/ML",
+        "Rust"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Add RustChain to a Wikipedia or Wiki Article — 20 RTC",
+      "bountyAmount": 20,
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/284",
+      "repo": "https://api.github.com/repos/Scottcjn/rustchain-bounties",
+      "number": 284,
+      "techStack": [
+        "TypeScript",
+        "AI/ML",
+        "Rust"
+      ]
+    },
+    {
+      "title": "Create Original BoTTube Video Content (15 RTC)",
+      "bountyAmount": 15,
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/286",
+      "repo": "https://api.github.com/repos/Scottcjn/rustchain-bounties",
+      "number": 286,
+      "techStack": [
+        "Python",
+        "TypeScript",
+        "AI/ML",
+        "Rust"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Write a Blog Post About Proof-of-Antiquity — 15 RTC",
+      "bountyAmount": 15,
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/282",
+      "repo": "https://api.github.com/repos/Scottcjn/rustchain-bounties",
+      "number": 282,
+      "techStack": [
+        "TypeScript",
+        "JavaScript",
+        "AI/ML",
+        "Rust"
+      ]
+    },
+    {
+      "title": "🎯 Bounty: Feature Flag Folders for Organization",
+      "bountyAmount": 15,
+      "url": "https://github.com/databuddy-analytics/Databuddy/issues/271",
+      "repo": "https://api.github.com/repos/databuddy-analytics/Databuddy",
+      "number": 271,
+      "techStack": [
+        "Python",
+        "TypeScript",
+        "JavaScript",
+        "Playwright",
+        "AI/ML",
+        "Go"
+      ]
+    },
+    {
+      "title": "🎯 Bounty: Uptime Monitoring Alarm Integration",
+      "bountyAmount": 15,
+      "url": "https://github.com/databuddy-analytics/Databuddy/issues/268",
+      "repo": "https://api.github.com/repos/databuddy-analytics/Databuddy",
+      "number": 268,
+      "techStack": [
+        "TypeScript",
+        "JavaScript",
+        "Playwright",
+        "AI/ML",
+        "Go"
+      ]
+    },
+    {
+      "title": "🎯 Bounty: Alarms System - Database, API & Dashboard UI",
+      "bountyAmount": 15,
+      "url": "https://github.com/databuddy-analytics/Databuddy/issues/267",
+      "repo": "https://api.github.com/repos/databuddy-analytics/Databuddy",
+      "number": 267,
+      "techStack": [
+        "TypeScript",
+        "JavaScript",
+        "Playwright",
+        "AI/ML",
+        "Go"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Create a RustChain Explainer Video or Short — 10 RTC",
+      "bountyAmount": 10,
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/283",
+      "repo": "https://api.github.com/repos/Scottcjn/rustchain-bounties",
+      "number": 283,
+      "techStack": [
+        "TypeScript",
+        "JavaScript",
+        "AI/ML",
+        "Rust"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Showcase Your Mining Rig on Social Media — 10 RTC",
+      "bountyAmount": 10,
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/280",
+      "repo": "https://api.github.com/repos/Scottcjn/rustchain-bounties",
+      "number": 280,
+      "techStack": [
+        "TypeScript",
+        "AI/ML",
+        "Rust"
+      ]
+    },
+    {
+      "title": "Create 3D Weapon Models for Xonotic RustChain Arena (15 RTC each)",
+      "bountyAmount": 3,
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/288",
+      "repo": "https://api.github.com/repos/Scottcjn/rustchain-bounties",
+      "number": 288,
+      "techStack": [
+        "TypeScript",
+        "Playwright",
+        "AI/ML",
+        "Rust",
+        "Go"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Follow @RustchainPOA and @BoTTubeAI on X — 3 RTC",
+      "bountyAmount": 3,
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/279",
+      "repo": "https://api.github.com/repos/Scottcjn/rustchain-bounties",
+      "number": 279,
+      "techStack": [
+        "TypeScript",
+        "AI/ML",
+        "Rust"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Retweet or Quote Tweet a @RustchainPOA Post — 2 RTC",
+      "bountyAmount": 2,
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/281",
+      "repo": "https://api.github.com/repos/Scottcjn/rustchain-bounties",
+      "number": 281,
+      "techStack": [
+        "TypeScript",
+        "AI/ML",
+        "Rust"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Trending Market Machine — Auto-Create Labs Markets from Viral Topics — 1.0 SOL",
+      "bountyAmount": 1,
+      "url": "https://github.com/bolivian-peru/baozi-openclaw/issues/42",
+      "repo": "https://api.github.com/repos/bolivian-peru/baozi-openclaw",
+      "number": 42,
+      "techStack": [
+        "TypeScript",
+        "AI/ML",
+        "Go"
+      ]
+    },
+    {
+      "title": "[BOUNTY] Agent Recruiter — AI That Onboards Other Agents to Trade — 1.0 SOL",
+      "bountyAmount": 1,
+      "url": "https://github.com/bolivian-peru/baozi-openclaw/issues/41",
+      "repo": "https://api.github.com/repos/bolivian-peru/baozi-openclaw",
+      "number": 41,
+      "techStack": [
+        "TypeScript",
+        "AI/ML",
+        "Go"
+      ]
+    }
+  ]
+}
