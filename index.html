@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw 子代理系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 60px;
+        }
+        .agents {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .agent-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        .agent-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+        .agent-card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .agent-card .role {
+            color: #764ba2;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .agent-card .tools {
+            color: #666;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e9ecef;
+        }
+        .links {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        .links h3 {
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+        .link-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        .link-item:hover {
+            border-color: #667eea;
+            background: #f0f4f8;
+        }
+        .link-item a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .link-item a:hover {
+            color: #764ba2;
+        }
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #e9ecef;
+        }
+        .github-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .github-link:hover {
+            color: #764ba2;
+        }
+        .badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="badge">v1.0.0</span>
+            <h1>🐺 OpenClaw 子代理系统</h1>
+            <p>两个专业子代理的完整文档和使用说明</p>
+        </div>
+
+        <div class="content">
+            <div class="agents">
+                <div class="agent-card">
+                    <h2>🎨 XHS Operator</h2>
+                    <div class="role">小红书自媒体运营专家</div>
+                    <p>专业的小红书运营专家，包含 <strong>13 个</strong>可用工具。</p>
+                    <div class="tools">工具：数据驱动系统、自动发布、市场情报、报告生成等</div>
+                    <a href="xhs-operator-agent.md" style="color: #667eea;">→ 查看完整文档</a>
+                </div>
+
+                <div class="agent-card">
+                    <h2>👨‍💼 Boss Assistant</h2>
+                    <div class="role">专业行政助理</div>
+                    <p>专业的行政助理，包含 <strong>20 个</strong>可用工具。</p>
+                    <div class="tools">工具：日程管理、邮件处理、会议协调、任务管理、HEARTBEAT 汇报、报告生成等</div>
+                    <a href="boss-assistant-agent.md" style="color: #667eea;">→ 查看完整文档</a>
+                </div>
+            </div>
+
+            <div class="links">
+                <h3>📚 完整文档索引</h3>
+                <div class="link-item">
+                    <a href="agents-index.md" target="_blank">
+                        📋 agents-index.md - 子代理索引（完整工具清单）
+                    </a>
+                </div>
+            </div>
+
+            <div class="links">
+                <h3>🌐 GitHub 仓库</h3>
+                <div class="link-item">
+                    <a href="https://github.com/vimalinx/openclaw-agents" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12s5.373 12 12 12 12zm0-1l-4.5 4.5 1.5 1.5 0 0 0 1.5-1.5 0 0 0-1.5 1.5L12 11l-4.5 4.5-1.5 1.5 0 0 0-1.5-1.5 0 0 0 1.5-1.5L12 1 0 0 0 1-1.5-1.5 0 0 0 1.5 1.5zM12 10c-5.514 0-10 4.486-10 10s4.486 10 10 10c0 1.5.5.5 1.5 0 0 0-1.5 1.5 0 0 0 1.5-1.5L12 11l4.5 4.5-1.5 1.5 0 0 0 1.5-1.5 0 0 0-1.5 1.5L12 11c0 0-1-5.5-1.5-1.5 0 0 0 1.5-1.5 0 0 0 1.5 1.5z"/>
+                        </svg>
+                        github.com/vimalinx/openclaw-agents
+                    </a>
+                </div>
+            </div>
+
+            <div class="links">
+                <h3>📄 查看源码文档</h3>
+                <div class="link-item">
+                    <a href="https://github.com/vimalinx/openclaw-agents/blob/master/xhs-operator-agent.md" target="_blank">
+                        📄 xhs-operator-agent.md - XHS Operator 完整文档
+                    </a>
+                </div>
+                <div class="link-item">
+                    <a href="https://github.com/vimalinx/openclaw-agents/blob/master/boss-assistant-agent.md" target="_blank">
+                        📄 boss-assistant-agent.md - Boss Assistant 完整文档
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>创建于 2026-02-22 | <a href="https://vimalinx.github.io/openclaw-agents/" class="github-link">vimalinx.github.io/openclaw-agents</a></p>
+        </div>
+    </div>
+</body>
+</html>
